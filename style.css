@@ -184,14 +184,13 @@ body {
     color: #a0aec0;
 }
 
-/* Main Workspace Layout Wrapper */
 .dashboard-container {
     max-width: 1200px;
     margin: 30px auto;
     padding: 0 20px;
 }
 
-/* 2. Greeting Header Layout */
+
 .greeting-section {
     display: flex;
     justify-content: space-between;
@@ -230,7 +229,7 @@ body {
     font-weight: 600;
 }
 
-/* 3. Balance Hero Card Element */
+
 .balance-card {
     background-color: #0a2240;
     color: #ffffff;
@@ -262,7 +261,7 @@ body {
     font-size: 14px;
 }
 
-/* 4. Action Grid Component Structure */
+
 .action-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -290,10 +289,16 @@ body {
     color: #4a5568;
 }
 
-.grid-item h3 {
+.grid-item h3  {
     font-size: 18px;
     color: #2d3748;
     margin-bottom: 5px;
+}
+.grid-item a{
+    text-decoration: none;
+    color: #2d3748;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .grid-item p {
@@ -301,35 +306,9 @@ body {
     color: #718096;
 }
 
-/* 5. Footer Layout Styling */
-.demo-footer {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px 20px 20px;
-    color: #718096;
-    font-size: 12px;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    border-top: 1px solid #e2e8f0;
-    padding-top: 15px;
-}
-
-.status-indicator {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+main a{
+    text-decoration: none;
     color: #2d3748;
-    font-weight: 600;
-}
-
-.dot {
-    height: 8px;
-    width: 8px;
-    background-color: #38a169;
-    border-radius: 50%;
-    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
 }
