@@ -23,19 +23,23 @@
         <h1>Enter Your PIN</h1>
         <p>Use the keypad to enter your four-digit demo PIN. keep your PIN private.</p>
     </div>
-    <div>
-        <div class="display_box">
-            <p>FOUR-DIGIT PIN</p>
-             <input type="password" inputmode="numeric" autocomplete="one-time-code" aria-label="Digit 1">
-            <input type="password" inputmode="numeric" autocomplete="off" aria-label="Digit 2">
-            <input type="password" inputmode="numeric" autocomplete="off" aria-label="Digit 3">
-            <input type="password" inputmode="numeric" autocomplete="off" aria-label="Digit 4">
-            <ul></ul>
-            <form action="./dashboard.html" method="get">
-                <button type="submit" class="enter-button">Enter</button>
-            </form>
-        </div>
-        <div class="buttons">
+    <main class="pin-layout">
+        <section class="display_box">
+            <div class="account-summary">
+                <h2>Alex Johnson</h2>
+                <p>Savings Account · **** **** 4821</p>
+            </div>
+            <p class="pin-label">FOUR-DIGIT PIN</p>
+            <div class="pin-inputs">
+                <input type="password" inputmode="numeric" autocomplete="one-time-code" aria-label="Digit 1">
+                <input type="password" inputmode="numeric" autocomplete="off" aria-label="Digit 2">
+                <input type="password" inputmode="numeric" autocomplete="off" aria-label="Digit 3">
+                <input type="password" inputmode="numeric" autocomplete="off" aria-label="Digit 4">
+            </div>
+        </section>
+        <section class="keypad-section">
+            <p class="keypad-label">Touch keypad</p>
+            <div class="buttons">
             <div class="btn_rows">
                 <button>1</button>
                 <button>2</button>
@@ -56,8 +60,15 @@
                 <button>0</button>
                 <button>delte</button>
             </div>
-        </div>
-    </div>
+            </div>
+            <div class="keypad-actions">
+                <a class="cancel-button" href="./welcome_page.html">Cancel</a>
+                <form action="./dashboard.html" method="get">
+                    <button type="submit" class="enter-button">Enter</button>
+                </form>
+            </div>
+        </section>
+    </main>
     
 </body>
 </html>

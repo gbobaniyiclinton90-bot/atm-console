@@ -45,16 +45,17 @@ body {
     line-height: 1.5;
 }
 
-/* 5. Main content layout */
-body > div:nth-of-type(2) {
+/* Main content layout */
+.pin-layout {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: 32px;
     padding: 0 32px;
     align-items: start;
+    width: 100%;
 }
 
-/* 6. PIN display card */
+/* PIN display card */
 .display_box {
     background-color: var(--white);
     border: 1px solid var(--border_grey);
@@ -64,40 +65,64 @@ body > div:nth-of-type(2) {
     box-shadow: 0 5px 15px rgba(21, 45, 67, 0.04);
 }
 
-/* PIN label */
-.display_box p {
+.account-summary {
+    margin-bottom: 22px;
+}
+
+.account-summary h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.display_box .account-summary p {
+    color: var(--text_grey);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.display_box .pin-label {
     font-size: 13px;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
-/* PIN input */
-.display_box input {
+.pin-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.display_box .pin-inputs input {
     width: 64px;
     height: 68px;
     border: 1px solid var(--border_grey);
     border-radius: 13px;
     background-color: var(--light_blue-grey);
     outline: none;
-    margin-right: 10px;
+    margin: 0;
     text-align: center;
     font-size: 24px;
     color: var(--black);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-/* PIN input focus */
-.display_box input:focus {
+.display_box .pin-inputs input:focus {
     border-color: var(--teal);
 }
 
+.keypad-label {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 2px 0 16px;
+}
+
 .enter-button {
-    display: block;
-    margin-top: 24px;
-    padding: 13px 20px;
+    width: 100%;
+    height: 56px;
     border: 0;
-    border-radius: 9px;
-    background-color: var(--teal);
+    border-radius: 12px;
+    background-color: var(--royal_blue);
     color: var(--white);
     font-weight: 600;
     font-size: 16px;
@@ -105,10 +130,34 @@ body > div:nth-of-type(2) {
 }
 
 .enter-button:hover {
-    background-color: #17998d;
+    background-color: #193fb5;
 }
 
-/* 7. Keypad */
+.keypad-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.keypad-actions form {
+    min-width: 0;
+}
+
+.cancel-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-radius: 12px;
+    background-color: #fff1f2;
+    color: #dc2626;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* Keypad */
 .buttons {
     display: flex;
     flex-direction: column;
@@ -156,7 +205,7 @@ body > div:nth-of-type(2) {
     color: var(--text_grey);
 }
 
-/* 8. Responsive layout for mobile */
+/* Responsive layout for mobile */
 @media (max-width: 700px) {
     .text {
         padding: 25px 20px;
@@ -170,7 +219,7 @@ body > div:nth-of-type(2) {
         font-size: 14px;
     }
 
-    body > div:nth-of-type(2) {
+    .pin-layout {
         grid-template-columns: 1fr;
         padding: 0 20px 30px;
         gap: 24px;
@@ -181,10 +230,9 @@ body > div:nth-of-type(2) {
         padding: 24px 18px;
     }
 
-    .display_box input {
+    .display_box .pin-inputs input {
         width: 52px;
         height: 58px;
-        margin-right: 5px;
     }
 
     .btn_rows button {
