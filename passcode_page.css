@@ -91,6 +91,23 @@ body > div:nth-of-type(2) {
     border-color: var(--teal);
 }
 
+.enter-button {
+    display: block;
+    margin-top: 24px;
+    padding: 13px 20px;
+    border: 0;
+    border-radius: 9px;
+    background-color: var(--teal);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.enter-button:hover {
+    background-color: #17998d;
+}
+
 /* 7. Keypad */
 .buttons {
     display: flex;
