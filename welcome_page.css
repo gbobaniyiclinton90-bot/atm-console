@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --light_blue-grey: #F3F6FC;
+    --white: #FFFFFF;
+    --pale_teal: #E5F7F5;
+    --teal: #20B4A6;
+    --royal_blue:   #214ED8;
+    --black: black;
+}
+body {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--light_blue-grey);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.texts {
+    width: 90%;
+    max-width: 960px;
+    margin: 35px auto 24px;
+}
+
+.texts h1 {
+    color: var(--black);
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.parent {
+    height: 30vh;
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.account {
+    height: auto;
+    width: 100%;
+    background-color: var(--white);
+    border: 1px solid var(--light_blue-grey);
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 25px;
+}
+
+.account > p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.d_account {
+    width: 100%;
+    background-color: var(--pale_teal);
+    border: 2px solid var(--teal);
+    border-radius: 14px;
+    padding: 22px 15px;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+}
+
+.d_account:hover{
+    transform: scale(2) ;
+    color: var(--teal);
+}
+
+.d_account h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.d_account p {
+    font-size: 16px;
+    margin-bottom: 18px;
+}
+
+/* .account button {
+    width: 20%;
+    padding: 14px;
+    background-color: var(--royal_blue);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.3s ease;
+} */
+
+.d_account button:hover {
+    background-color: var(--teal);
+}
+
+.d_account:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .texts {
+        margin-top: 25px;
+    }
+
+    .texts h1 {
+        font-size: 25px;
+    }
+
+    .account {
+        padding: 18px 14px;
+    }
+
+    .account > p {
+        font-size: 18px;
+    }
+
+    .d_account {
+        padding: 18px 14px;
+    }
+
+    .d_account h2 {
+        font-size: 20px;
+    }
+}
