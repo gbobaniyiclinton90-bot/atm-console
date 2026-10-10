@@ -48,7 +48,12 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 25px;
 }
-
+.link,
+.link h2,
+.link p {
+    text-decoration: none;
+    color: inherit;
+}
 .account > p {
     font-size: 20px;
     font-weight: bold;

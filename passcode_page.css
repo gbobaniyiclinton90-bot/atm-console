@@ -1,0 +1,176 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --light_blue-grey: #F3F6FC;
+    --white: #FFFFFF;
+    --pale_teal: #E5F7F5;
+    --teal: #20B4A6;
+    --royal_blue: #214ED8;
+    --black: #152D43;
+    --error_red: #DC3545;
+    --text_grey: #64748B;
+    --border_grey: #DCE3EC;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--light_blue-grey);
+    color: var(--black);
+    min-height: 100vh;
+}
+
+/* 4. Page heading */
+.text {
+    padding: 35px 32px ;
+}
+
+.text h1 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #20334D;
+}
+
+.text p {
+    font-size: 16px;
+    color: var(--text_grey);
+    line-height: 1.5;
+}
+
+/* 5. Main content layout */
+body > div:nth-of-type(2) {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 32px;
+    padding: 0 32px;
+    align-items: start;
+}
+
+/* 6. PIN display card */
+.display_box {
+    background-color: var(--white);
+    border: 1px solid var(--border_grey);
+    border-radius: 20px;
+    padding: 28px 23px;
+    min-height: 360px;
+    box-shadow: 0 5px 15px rgba(21, 45, 67, 0.04);
+}
+
+/* PIN label */
+.display_box p {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* PIN input */
+.display_box input {
+    width: 64px;
+    height: 68px;
+    border: 1px solid var(--border_grey);
+    border-radius: 13px;
+    background-color: var(--light_blue-grey);
+    outline: none;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 24px;
+    color: var(--black);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* PIN input focus */
+.display_box input:focus {
+    border-color: var(--teal);
+}
+
+/* 7. Keypad */
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Each row of keypad buttons */
+.btn_rows {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+/* Keypad buttons */
+.btn_rows button {
+    height: 56px;
+    border: 1px solid var(--border_grey);
+    border-radius: 9px;
+    background-color: var(--white);
+    color: #20334D;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s,
+                border-color 0.2s;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* Hover effect */
+.btn_rows button:hover {
+    background-color: var(--pale_teal);
+    border-color: var(--teal);
+}
+
+/* Click effect */
+.btn_rows button:active {
+    transform: scale(0.98);
+}
+
+/* Clear and Delete buttons */
+.btn_rows:last-child button:first-child,
+.btn_rows:last-child button:last-child {
+    background-color: var(--light_blue-grey);
+    font-size: 13px;
+    color: var(--text_grey);
+}
+
+/* 8. Responsive layout for mobile */
+@media (max-width: 700px) {
+    .text {
+        padding: 25px 20px;
+    }
+
+    .text h1 {
+        font-size: 26px;
+    }
+
+    .text p {
+        font-size: 14px;
+    }
+
+    body > div:nth-of-type(2) {
+        grid-template-columns: 1fr;
+        padding: 0 20px 30px;
+        gap: 24px;
+    }
+
+    .display_box {
+        min-height: auto;
+        padding: 24px 18px;
+    }
+
+    .display_box input {
+        width: 52px;
+        height: 58px;
+        margin-right: 5px;
+    }
+
+    .btn_rows button {
+        height: 58px;
+    }
+}
