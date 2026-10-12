@@ -27,7 +27,7 @@ body {
     min-height: 100vh;
 }
 
-/* 4. Page heading */
+
 .text {
     padding: 35px 32px ;
 }
@@ -45,7 +45,7 @@ body {
     line-height: 1.5;
 }
 
-/* Main content layout */
+
 .pin-layout {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
@@ -55,7 +55,7 @@ body {
     width: 100%;
 }
 
-/* PIN display card */
+
 .display_box {
     background-color: var(--white);
     border: 1px solid var(--border_grey);
@@ -157,21 +157,21 @@ body {
     text-decoration: none;
 }
 
-/* Keypad */
+
 .buttons {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-/* Each row of keypad buttons */
+
 .btn_rows {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
 }
 
-/* Keypad buttons */
+
 .btn_rows button {
     height: 56px;
     border: 1px solid var(--border_grey);
@@ -186,18 +186,17 @@ body {
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-/* Hover effect */
+
 .btn_rows button:hover {
     background-color: var(--pale_teal);
     border-color: var(--teal);
 }
 
-/* Click effect */
+
 .btn_rows button:active {
     transform: scale(0.98);
 }
 
-/* Clear and Delete buttons */
 .btn_rows:last-child button:first-child,
 .btn_rows:last-child button:last-child {
     background-color: var(--light_blue-grey);
@@ -205,7 +204,7 @@ body {
     color: var(--text_grey);
 }
 
-/* Responsive layout for mobile */
+
 @media (max-width: 700px) {
     .text {
         padding: 25px 20px;
