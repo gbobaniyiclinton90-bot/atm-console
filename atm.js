@@ -1,11 +1,22 @@
-const adams = document.getElementById('adams')
-const clinton = document.getElementById('clinton')
-const names = document.getElementById('names')
-const user1 = document.getElementById('user1')
-const user2 = document.getElementById('user2')
 
-adams.addEventListener('click',()=>{
-    if(user1.innerText === 'Adams John'){
-        names.innerText = 'Adams John'
-    }else{names.innerText = 'Clinton Tolani'}
-})
+const UserDatabase =[
+   {
+        username: "Adams",
+        accountNo: "**** **** 4821",
+        pinCode: "1111", 
+        balance: "₦125,000.00"
+    },
+    {
+        username: "Clinton",
+        accountNo: "**** **** 4821",
+        pinCode: "2222", 
+        balance: "₦98,400.00"
+    },
+    {
+        username: "Alex Johnson",
+        accountNo: "**** **** 9912",
+        pinCode: "1234", 
+        balance: "₦450,000.00"
+    }  
+]
+
