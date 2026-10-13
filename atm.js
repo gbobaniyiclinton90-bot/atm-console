@@ -15,6 +15,7 @@ const ATM_USERS = {
 
 
 
+
 const cardboxes = document.querySelectorAll('.d_account');
 const nameDisplay = document.getElementById('names');
 const cardDisplay = document.getElementById('card-details');
@@ -62,3 +63,4 @@ btns.forEach((btn)=>{
 }})
 })
  
+

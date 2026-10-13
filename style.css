@@ -35,10 +35,13 @@ body {
 }
 
 .parent {
-    height: 30vh;
     width: 90%;
     max-width: 960px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+    align-items: center;
+    gap: 28px;
 }
 
 .account {
@@ -49,6 +52,188 @@ body {
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 25px;
+}
+
+.atm-illustration {
+    min-width: 0;
+    padding: 38px 24px 30px;
+    overflow: hidden;
+    border: 1px solid #edf1f6;
+    border-radius: 20px;
+    background: var(--white);
+    box-shadow: 0 12px 34px rgba(15, 41, 66, 0.08);
+}
+
+.demo-card {
+    position: relative;
+    width: 90%;
+    height: 202px;
+    margin: 8px auto 20px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #102d47;
+    box-shadow: 0 18px 30px rgba(12, 31, 48, 0.18);
+    color: var(--white);
+}
+
+.demo-card__stripe {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 11%;
+    background: #16b6a6;
+}
+
+.demo-card__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    height: 100%;
+    width: 89%;
+    flex-direction: column;
+    padding: 22px 24px 16px;
+}
+
+.demo-card__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.demo-card__logo {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 10px;
+    background: #13b5a5;
+    color: #102d47;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.demo-card__brand strong,
+.demo-card__brand small {
+    display: block;
+}
+
+.demo-card__brand strong {
+    font-size: 17px;
+    letter-spacing: 0.3px;
+}
+
+.demo-card__brand small {
+    margin-top: 2px;
+    color: #c0cfdb;
+    font-size: 9px;
+}
+
+.demo-card__chip {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    margin-top: 22px;
+    overflow: hidden;
+    border-radius: 7px;
+    background: #d9c695;
+}
+
+.demo-card__chip::before,
+.demo-card__chip::after,
+.demo-card__chip span::before {
+    position: absolute;
+    content: "";
+    background: rgba(99, 79, 42, 0.38);
+}
+
+.demo-card__chip::before {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 1px;
+}
+
+.demo-card__chip::after {
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 1px;
+}
+
+.demo-card__chip span::before {
+    top: 0;
+    bottom: 0;
+    left: 25%;
+    width: 1px;
+}
+
+.demo-card__number {
+    margin-top: 16px;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.demo-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    color: #bccbd7;
+    font-size: 10px;
+}
+
+.demo-card__footer strong {
+    color: #17c0ae;
+    font-size: 10px;
+}
+
+.card-slot {
+    padding: 18px 20px 17px;
+    border-radius: 14px;
+    background: #f3f6fa;
+}
+
+.card-slot p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-bottom: 12px;
+    color: #183452;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.card-slot__icon {
+    width: 16px;
+    height: 11px;
+    border: 1px solid #12a99e;
+    border-radius: 2px;
+}
+
+.card-slot__opening {
+    width: 78%;
+    height: 16px;
+    margin: 0 auto 10px;
+    border-radius: 5px;
+    background: #536879;
+}
+
+.card-slot__underline {
+    width: 70%;
+    height: 4px;
+    margin: 0 auto;
+    border-radius: 5px;
+    background: #10283c;
+}
+
+.atm-illustration__caption {
+    max-width: 360px;
+    margin: 18px auto 0;
+    color: #718096;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
 }
 .link,
 .link h2,
@@ -133,6 +318,36 @@ body {
 
     .d_account h2 {
         font-size: 20px;
+    }
+
+    .parent {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-bottom: 30px;
+    }
+
+    .atm-illustration {
+        padding: 30px 18px 24px;
+    }
+
+    .demo-card {
+        width: 94%;
+        height: 190px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+    .parent {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 0.9fr);
+        gap: 18px;
+    }
+
+    .demo-card {
+        height: 180px;
+    }
+
+    .demo-card__content {
+        padding: 18px 16px 14px;
     }
 }
 
