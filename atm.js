@@ -1,4 +1,3 @@
-
 const ATM_USERS = {
     "adams": {
         username: "Adams OWOADE",
@@ -19,6 +18,8 @@ const ATM_USERS = {
 const cardboxes = document.querySelectorAll('.d_account');
 const nameDisplay = document.getElementById('names');
 const cardDisplay = document.getElementById('card-details');
+const btns = document.querySelectorAll(".button")
+const pinInputs = document.querySelectorAll('.displayInput')
 
 
 cardboxes.forEach(card => {
@@ -39,4 +40,25 @@ if (nameDisplay && cardDisplay){
         cardDisplay.innerText = activeProfile.accountNo;   
     }  
 }
+
+btns.forEach((btn)=>{
+    btn.addEventListener('click',(e)=>{
+    e.preventDefault()
+
+    const value = btn.textContent.trim()
+    let currentIndex = Array.from(pinInputs).findIndex(input => input.value === '');
+    if (value === 'clear') {
+    pinInputs.forEach(input => input.value = '');
+    }else if (value === 'del') {
+        let lastFilledIndex = Array.from(pinInputs).findLastIndex(input => input.value !== '');
+        if (lastFilledIndex !== -1) {
+            pinInputs[lastFilledIndex].value = '';
+        }
+    
+    }else {
+    if (currentIndex !== -1) {
+        pinInputs[currentIndex].value = value;
+    }
+}})
+})
  
