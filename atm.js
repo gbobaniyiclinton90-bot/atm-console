@@ -8,6 +8,7 @@ const btns = document.querySelectorAll(".button")
 const pinInputs = document.querySelectorAll('.displayInput')
 const useerName = document.getElementById('user-name');
 const cardNumber = document.getElementById('card-number');
+const submitBtn = document.getElementById('submit-pin-btn');
 
 if (atmUsersContainer) {    
 
@@ -60,7 +61,33 @@ btns.forEach((btn)=>{
     if (currentIndex !== -1) {
         pinInputs[currentIndex].value = value;
     }
+
+
 }})
 })
  
+submitBtn.addEventListener('click', (e)=>{
+    e.preventDefault()
+
+ const enteredPin = Array.from(pinInputs)
+    .map(input => input.value)
+    .join('');
+
+    if (enteredPin.length !== 4) {
+     alert("Please enter your four-digit PIN.");
+     return;
+    }
+
+    if (enteredPin === activeProfile.pinCode) {
+        window.location.href = "./transaction_page.html";
+    }
+
+    let failedInput = 0;
+    failedInput++;
+    const remainingAttempts = 3 - failedInput;
+    if(failedInput < 3){
+     alert(`Incorrect PIN. You have ${remainingAttempts} attempts remaining.`);
+     }
+})
+
 
