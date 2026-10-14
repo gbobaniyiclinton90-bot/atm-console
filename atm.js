@@ -1,4 +1,5 @@
 
+
 const atmUsersContainer = document.getElementById('atmUsersContainer');
 const cardboxes = document.querySelectorAll('.d_account');
 const nameDisplay = document.getElementById('names');
@@ -8,19 +9,31 @@ const pinInputs = document.querySelectorAll('.displayInput')
 const useerName = document.getElementById('user-name');
 const cardNumber = document.getElementById('card-number');
 
+function renderUsers() {
 
-atmUsersContainer
+    const atmUsersContainer = document.getElementById('atmUsersContainer');
 
+    if (!atmUsersContainer) {
+        return;
+    }
 
+for ( const [userId,user] of Object.entries(ATM_USERS)){
+        
+ const cards = document.createElement('div')
+ cards.classList.add("d_account");
+ cards.innerHTML = `
+   <h3>${user.username}</h3>
+   <p>${user.accountNo}</p>
+   `;
 
-cardboxes.forEach(card => {
-    card.addEventListener("click", ()=>{
-     const selectedUserId = card.getAttribute('data-userid');
-     localStorage.setItem('activeUserId', selectedUserId);
+    cards.addEventListener("click", ()=>{
+     localStorage.setItem('activeUserId', userId);
       window.location.href = "./passcode_page.html";
-
     })
-})
+
+   atmUsersContainer.appendChild(cards)
+}
+}
 
 if (nameDisplay && cardDisplay){
     const savedsession= localStorage.getItem('activeUserId');
@@ -30,6 +43,8 @@ if (nameDisplay && cardDisplay){
         nameDisplay.innerText = activeProfile.username;
         cardDisplay.innerText = activeProfile.accountNo;   
     }  
+
+    console.log(activeProfile)
 }
 
 btns.forEach((btn)=>{
