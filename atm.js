@@ -9,13 +9,7 @@ const pinInputs = document.querySelectorAll('.displayInput')
 const useerName = document.getElementById('user-name');
 const cardNumber = document.getElementById('card-number');
 
-function renderUsers() {
-
-    const atmUsersContainer = document.getElementById('atmUsersContainer');
-
-    if (!atmUsersContainer) {
-        return;
-    }
+if (atmUsersContainer) {    
 
 for ( const [userId,user] of Object.entries(ATM_USERS)){
         
@@ -46,6 +40,7 @@ if (nameDisplay && cardDisplay){
 
     console.log(activeProfile)
 }
+
 
 btns.forEach((btn)=>{
     btn.addEventListener('click',(e)=>{
