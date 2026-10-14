@@ -1,26 +1,16 @@
-const ATM_USERS = {
-    "adams": {
-        username: "Adams OWOADE",
-        accountNo: "Savings Account · **** **** 4821",
-        pinCode: "1111", 
-        balance: "₦125,000.00"
-    },
-    "clinton": {
-        username: "Clinton Gbobaniyi",
-        accountNo: "Current Account · **** **** 9912",
-        pinCode: "2222",
-        balance: "₦98,400.00"
-    }
-};
 
-
-
-
+const atmUsersContainer = document.getElementById('atmUsersContainer');
 const cardboxes = document.querySelectorAll('.d_account');
 const nameDisplay = document.getElementById('names');
 const cardDisplay = document.getElementById('card-details');
 const btns = document.querySelectorAll(".button")
 const pinInputs = document.querySelectorAll('.displayInput')
+const useerName = document.getElementById('user-name');
+const cardNumber = document.getElementById('card-number');
+
+
+atmUsersContainer
+
 
 
 cardboxes.forEach(card => {
