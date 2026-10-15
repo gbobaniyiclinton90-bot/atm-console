@@ -20,7 +20,6 @@ for ( const [userId,user] of Object.entries(ATM_USERS)){
    <h3>${user.username}</h3>
    <p>${user.accountNo}</p>
    `;
-
     cards.addEventListener("click", ()=>{
      localStorage.setItem('activeUserId', userId);
       window.location.href = "./passcode_page.html";
@@ -68,26 +67,27 @@ btns.forEach((btn)=>{
  
 submitBtn.addEventListener('click', (e)=>{
     e.preventDefault()
-
  const enteredPin = Array.from(pinInputs)
     .map(input => input.value)
     .join('');
 
+    const savedsession= localStorage.getItem('activeUserId');
+    const activeProfile = ATM_USERS[savedsession];
+
     if (enteredPin.length !== 4) {
-     alert("Please enter your four-digit PIN.");
-     return;
+        const alertMessage = document.getElementById('alert-message');
+        alertMessage.textContent = "Please enter your four-digit PIN.";
+        return;
     }
 
     if (enteredPin === activeProfile.pinCode) {
-        window.location.href = "./transaction_page.html";
+        window.location.href = "./dashboard.html";
     }
-
-    let failedInput = 0;
-    failedInput++;
-    const remainingAttempts = 3 - failedInput;
-    if(failedInput < 3){
-     alert(`Incorrect PIN. You have ${remainingAttempts} attempts remaining.`);
-     }
 })
 
-
+//  let failedInput = 0;
+//     failedInput++;
+//     const remainingAttempts = 3 - failedInput;
+//     if(failedInput < 3){
+//      alert(`Incorrect PIN. You have ${remainingAttempts} attempts remaining.`);
+//      }

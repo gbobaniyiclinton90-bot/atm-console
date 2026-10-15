@@ -111,6 +111,38 @@ body {
     border-color: var(--teal);
 }
 
+.alert-message {
+    position: relative;
+    flex: 0 0 100%;
+    margin-top: 10px;
+    padding: 16px 16px 16px 46px;
+    border-radius: 12px;
+    background-color: #fff1f2;
+    color: #dc2626;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.alert-message:empty {
+    display: none;
+}
+
+.alert-message:not(:empty)::before {
+    content: "!";
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: grid;
+    width: 18px;
+    height: 18px;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 1;
+}
+
 .keypad-label {
     font-size: 14px;
     font-weight: 700;
