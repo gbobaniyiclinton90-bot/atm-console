@@ -14,8 +14,13 @@ const alertMessage = document.getElementById('alert-message');
  const savedsession= localStorage.getItem('activeUserId');
  const activeProfile = ATM_USERS[savedsession];
 
- let failedInput = 0;
- const remainingAttempts = 3 - failedInput;
+
+
+const attemptKey = `failedInput-${savedsession}`;
+
+let failedInput = Number(localStorage.getItem(attemptKey)) || 0;
+
+const savedUserId = localStorage.getItem('activeUserId');
 
 
 if (atmUsersContainer) {    
@@ -29,7 +34,8 @@ for ( const [userId,user] of Object.entries(ATM_USERS)){
    `;
     cards.addEventListener("click", ()=>{
      localStorage.setItem('activeUserId', userId);
-      window.location.href = "./passcode_page.html";
+     localStorage.removeItem(attemptKey);
+     window.location.href = "./passcode_page.html";
     })
 
    atmUsersContainer.appendChild(cards)
@@ -68,8 +74,6 @@ btns.forEach((btn)=>{
 }})
 })
 
-
-   
 submitBtn.addEventListener('click', (e)=>{
     e.preventDefault()
  const enteredPin = Array.from(pinInputs)
@@ -85,12 +89,18 @@ submitBtn.addEventListener('click', (e)=>{
         window.location.href = "./dashboard.html";
     }else{
         failedInput++;
+
+         localStorage.setItem(attemptKey, failedInput);
     }
-   
+   const remainingAttempts = 3 - failedInput;
+
     if (failedInput < 3){
         alertMessage.textContent = `Incorrect PIN. You have ${remainingAttempts} attempts remaining.`;
         return;
+    }else{
+        alertMessage.textContent = "Too many incorrect attempts.";
+        submitBtn.disabled = true;
+        pinInputs.forEach(input => input.disabled = true);
     }
-
 })
 
