@@ -456,6 +456,12 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+.balance-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
 .card-top, .card-bottom {
     display: flex;
     justify-content: space-between;

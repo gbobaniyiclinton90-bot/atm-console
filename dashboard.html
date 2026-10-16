@@ -23,23 +23,25 @@
         <section class="greeting-section">
             <div class="user-welcome">
                 <p class="time-greeting">Good afternoon!</p>
-                <h2 class="username" id="display-username">Clinton  Tolani</h2>
+                <h2 class="username" id="names"></h2>
             </div>
             <div class="header-actions">
                 <span class="notification-status">🔔 No new notifications</span>
             </div>
         </section>
+        <a class="balance-link" href="./check_balance.html" aria-label="View account balance details">
         <section class="balance-card">
             <div class="card-top">
                 <span class="balance-label">Available balance • Simulated</span>
                 <span class="secure-icon">🛡️</span>
             </div>
-            <div class="balance-amount">₦125,000.00</div>
+            <div class="balance-amount"></div>
             <div class="card-bottom">
                 <span class="account-type">Savings Account</span>
-                <span class="card-number">**** **** 4821</span>
+                <span class="card-number" id="card-details"></span>
             </div>
         </section>
+        </a>
         <section class="action-grid">
             <a href="./withdraw_cash.html" class="grid-link">
                 <div class="grid-item">
@@ -67,11 +69,13 @@
                 <h3>Transaction History</h3>
                 <p>Review your demo activity</p>
             </div>
+            <a href="./change_pin.html" class="grid-link">
             <div class="grid-item">
                 <div class="icon">🔒</div>
                 <h3>Change PIN</h3>
                 <p>Update your demo security</p>
             </div>
+            </a>
 
             <a href="./welcome_page.html" class="grid-link">
                <div class="grid-item">
@@ -83,5 +87,7 @@
         </section>
 
     </main>
+    <script src="./atm-users.js"></script>
+    <script src="./atm.js"></script>
 </body>
 </html>

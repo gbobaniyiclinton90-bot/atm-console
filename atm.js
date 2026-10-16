@@ -20,7 +20,6 @@ let failedInput = Number(localStorage.getItem(attemptKey)) || 0;
 const LOCK_DURATION = 30000;
 
 
-// WELCOME PAGE: Create the account cards
 if (atmUsersContainer) {
     for (const [userId, user] of Object.entries(ATM_USERS)) {
 
@@ -33,13 +32,7 @@ if (atmUsersContainer) {
         `;
 
         cards.addEventListener("click", () => {
-
             localStorage.setItem('activeUserId', userId);
-
-            // IMPORTANT:
-            // Do not remove the failed attempts or lock here.
-            // The selected card must remain locked until its timer expires.
-
             window.location.href = "./passcode_page.html";
         });
 
@@ -52,25 +45,24 @@ if (nameDisplay && cardDisplay) {
     if (activeProfile) {
         nameDisplay.innerText = activeProfile.username;
         cardDisplay.innerText = activeProfile.accountNo;
-    }
+    }   
 
     console.log(activeProfile);
 }
 
 
-// LOCK TIMER FUNCTION
+
 function checkCardLock() {
 
     const lockExpiry = Number(localStorage.getItem(lockKey));
 
-    // No saved lock means the card is not locked.
+
     if (!lockExpiry) {
         return false;
     }
 
     const timeRemaining = lockExpiry - Date.now();
 
-    // If the 30 seconds have passed, unlock the card.
     if (timeRemaining <= 0) {
 
         localStorage.removeItem(lockKey);
@@ -93,7 +85,7 @@ function checkCardLock() {
         return false;
     }
 
-    // The card is still locked.
+
     if (submitBtn) {
         submitBtn.disabled = true;
     }
@@ -111,12 +103,10 @@ function checkCardLock() {
 }
 
 
-// CHECK WHETHER THE CARD IS LOCKED WHEN THE PASSCODE PAGE OPENS
 if (submitBtn && activeProfile) {
 
     checkCardLock();
-
-    // Keep updating the countdown while the page remains open.
+  
     const lockTimer = setInterval(() => {
 
         const stillLocked = checkCardLock();
@@ -129,14 +119,14 @@ if (submitBtn && activeProfile) {
 }
 
 
-// KEYPAD BUTTONS
+
 btns.forEach((btn) => {
 
     btn.addEventListener('click', (e) => {
 
         e.preventDefault();
 
-        // Do not allow PIN entry while the card is locked.
+        
         if (checkCardLock()) {
             return;
         }
@@ -175,7 +165,7 @@ if (submitBtn) {
 
         e.preventDefault();
 
-        // First, check whether the card is still locked.
+      
         if (checkCardLock()) {
             return;
         }
@@ -213,14 +203,11 @@ if (submitBtn) {
             return;
 
         } else {
-
-            // THIRD WRONG PIN: SAVE THE TIME WHEN THE LOCK ENDS.
             const lockExpiry = Date.now() + LOCK_DURATION;
-
             localStorage.setItem(lockKey, lockExpiry);
-
-            // Immediately display the lock message and disable PIN entry.
             checkCardLock();
         }
     });
 }
+
+
