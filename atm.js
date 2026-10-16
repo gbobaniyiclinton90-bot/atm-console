@@ -8,6 +8,7 @@ const useerName = document.getElementById('user-name');
 const cardNumber = document.getElementById('card-number');
 const submitBtn = document.getElementById('submit-pin-btn');
 const alertMessage = document.getElementById('alert-message');
+const balanceDisplay = document.getElementById('balance');
 
 const savedsession = localStorage.getItem('activeUserId');
 const activeProfile = ATM_USERS[savedsession];
@@ -41,10 +42,11 @@ if (atmUsersContainer) {
 }
 
 
-if (nameDisplay && cardDisplay) {
+if (nameDisplay, cardDisplay, balanceDisplay) {
     if (activeProfile) {
         nameDisplay.innerText = activeProfile.username;
         cardDisplay.innerText = activeProfile.accountNo;
+        balanceDisplay.innerText = `₦${activeProfile.balance.toLocaleString()}`;
     }   
 
     console.log(activeProfile);
