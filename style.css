@@ -486,6 +486,13 @@ body {
     margin-bottom: 40px;
 }
 
+.action-grid > .grid-link {
+    display: block;
+    color: inherit;
+    font-size: inherit;
+    text-decoration: none;
+}
+
 .grid-item {
     background: #ffffff;
     border: 1px solid #edf2f7;

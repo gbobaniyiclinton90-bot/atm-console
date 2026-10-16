@@ -1,0 +1,504 @@
+:root {
+    --withdraw-bg: #f3f6fc;
+    --withdraw-navy: #112b45;
+    --withdraw-text: #1b3155;
+    --withdraw-muted: #647995;
+    --withdraw-border: #d9e3f0;
+    --withdraw-blue: #214ed8;
+    --withdraw-teal: #05b7a7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.withdraw-page,
+body.deposit-page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    background: var(--withdraw-bg);
+    color: var(--withdraw-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.withdraw-header {
+    display: flex;
+    min-height: 88px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    background: var(--withdraw-navy);
+    color: #fff;
+}
+
+.brand,
+.brand-copy,
+.header-navigation,
+.header-navigation a {
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    gap: 12px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.brand-mark {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 11px;
+    background: var(--withdraw-teal);
+    color: var(--withdraw-navy);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.brand-copy {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.brand-copy strong {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.brand-copy small {
+    color: #bdcbd8;
+    font-size: 10px;
+}
+
+.header-navigation {
+    gap: 28px;
+}
+
+.header-navigation a {
+    gap: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.header-navigation a span {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.withdraw-header .terminal-info {
+    margin-left: -4px;
+    text-align: right;
+}
+
+.withdraw-header .date-time {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.withdraw-header .terminal-name {
+    margin-top: 4px;
+    color: #bdcbd8;
+    font-size: 10px;
+}
+
+.withdraw-main {
+    width: 100%;
+    flex: 1;
+    padding: 34px 32px 40px;
+}
+
+.page-heading {
+    margin-bottom: 23px;
+}
+
+.page-heading h1 {
+    margin: 0 0 8px;
+    color: var(--withdraw-text);
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.page-heading p {
+    margin: 0;
+    color: var(--withdraw-muted);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.withdraw-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.9fr);
+    align-items: start;
+    gap: 24px;
+}
+
+.withdraw-details {
+    min-width: 0;
+}
+
+.amount-card {
+    padding: 20px 19px 17px;
+    border: 1px solid var(--withdraw-border);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(21, 45, 67, 0.04);
+}
+
+.balance-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.balance-row span {
+    color: var(--withdraw-muted);
+    font-size: 14px;
+}
+
+.balance-row strong {
+    color: var(--withdraw-text);
+    font-size: 24px;
+    white-space: nowrap;
+}
+
+.quick-amounts {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    margin: 0 0 22px;
+    padding: 0;
+    border: 0;
+}
+
+.quick-amount {
+    position: relative;
+    cursor: pointer;
+}
+
+.quick-amount input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.quick-amount span {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 5px;
+    border: 1px solid var(--withdraw-border);
+    border-radius: 9px;
+    background: var(--withdraw-bg);
+    color: var(--withdraw-text);
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.quick-amount input:checked + span {
+    border-color: var(--withdraw-teal);
+    background: #e5f7f5;
+}
+
+.quick-amount input:focus-visible + span {
+    outline: 2px solid var(--withdraw-blue);
+    outline-offset: 2px;
+}
+
+.custom-amount-label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--withdraw-text);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.custom-amount {
+    width: 100%;
+    height: 64px;
+    padding: 0 14px;
+    border: 2px solid #2453ff;
+    border-radius: 12px;
+    outline: none;
+    background: var(--withdraw-bg);
+    color: var(--withdraw-text);
+    font: inherit;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.custom-amount:focus-visible {
+    box-shadow: 0 0 0 3px rgba(36, 83, 255, 0.15);
+}
+
+.denomination-note {
+    margin: 18px 0 0;
+    color: var(--withdraw-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.simulation-notice {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    background: #e5f7f5;
+    color: #008f83;
+    font-size: 13px;
+}
+
+.simulation-notice p {
+    margin: 0;
+}
+
+.notice-icon {
+    display: grid;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.withdraw-actions {
+    display: grid;
+    grid-template-columns: 91px minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.withdraw-actions a,
+.withdraw-actions button {
+    display: flex;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.cancel-main {
+    border: 1px solid var(--withdraw-border);
+    background: #fff;
+    color: var(--withdraw-navy);
+}
+
+.confirm-withdrawal {
+    border: 0;
+    background: var(--withdraw-blue);
+    color: #fff;
+    cursor: pointer;
+}
+
+.keypad-panel {
+    padding-top: 2px;
+}
+
+.keypad-panel h2 {
+    margin: 0 0 16px;
+    color: var(--withdraw-text);
+    font-size: 14px;
+}
+
+.amount-keypad {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.amount-keypad button {
+    min-height: 56px;
+    border: 1px solid var(--withdraw-border);
+    border-radius: 9px;
+    background: #fff;
+    color: var(--withdraw-text);
+    font: inherit;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.amount-keypad button:hover {
+    border-color: var(--withdraw-teal);
+    background: #f3fbfa;
+}
+
+.amount-keypad .keypad-utility {
+    background: var(--withdraw-bg);
+    color: var(--withdraw-muted);
+    font-size: 13px;
+}
+
+.keypad-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.keypad-actions a,
+.keypad-actions button {
+    display: flex;
+    min-height: 56px;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 12px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.keypad-actions a {
+    background: #fff1f2;
+    color: #dc2626;
+}
+
+.keypad-actions button {
+    background: var(--withdraw-blue);
+    color: #fff;
+    cursor: pointer;
+}
+
+.keypad-help {
+    margin: 16px 0 0;
+    color: var(--withdraw-muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.withdraw-footer {
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 32px;
+    border-top: 1px solid var(--withdraw-border);
+    background: #fff;
+    color: var(--withdraw-muted);
+    font-size: 12px;
+}
+
+.session-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #008f83;
+}
+
+.session-status i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--withdraw-teal);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+@media (max-width: 760px) {
+    .withdraw-header {
+        padding: 14px 20px;
+    }
+
+    .header-navigation {
+        gap: 16px;
+    }
+
+    .withdraw-header .terminal-info {
+        display: none;
+    }
+
+    .withdraw-main {
+        padding: 28px 20px 32px;
+    }
+
+    .withdraw-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .withdraw-header {
+        min-height: 72px;
+        padding: 12px 16px;
+    }
+
+    .brand-mark {
+        width: 36px;
+        height: 36px;
+    }
+
+    .brand-copy strong {
+        font-size: 17px;
+    }
+
+    .header-navigation {
+        gap: 12px;
+    }
+
+    .header-navigation a {
+        gap: 4px;
+        font-size: 12px;
+    }
+
+    .page-heading h1 {
+        font-size: 28px;
+    }
+
+    .page-heading p {
+        font-size: 14px;
+    }
+
+    .amount-card {
+        padding: 18px 14px;
+    }
+
+    .balance-row strong {
+        font-size: 20px;
+    }
+
+    .quick-amounts {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .withdraw-footer {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding: 12px 16px;
+    }
+}

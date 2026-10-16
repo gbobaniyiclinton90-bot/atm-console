@@ -1,0 +1,70 @@
+.deposit-page .quick-amounts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 22px;
+}
+
+.deposit-page .simulation-notice {
+    min-height: 64px;
+    align-items: flex-start;
+    line-height: 1.45;
+}
+
+.deposit-slot {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 31px auto 29px;
+}
+
+.deposit-slot p {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 12px;
+    color: var(--withdraw-text);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.banknote-icon {
+    position: relative;
+    display: inline-block;
+    width: 16px;
+    height: 10px;
+    border: 1px solid #008f83;
+    border-radius: 2px;
+}
+
+.banknote-icon::after {
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 2px;
+    height: 2px;
+    border: 1px solid #008f83;
+    border-radius: 50%;
+    content: "";
+}
+
+.deposit-slot__opening {
+    width: 240px;
+    max-width: 80%;
+    height: 16px;
+    border-radius: 5px;
+    background: #536879;
+}
+
+.deposit-slot__underline {
+    width: 216px;
+    max-width: 72%;
+    height: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background: #10283c;
+}
+
+@media (max-width: 480px) {
+    .deposit-page .quick-amounts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

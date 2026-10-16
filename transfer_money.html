@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Funds | Apex Digital Bank</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./withdraw_cash.css">
+    <link rel="stylesheet" href="./transfer_money.css">
+</head>
+<body class="transfer-page">
+    <header class="withdraw-header">
+        <a class="brand" href="./dashboard.html" aria-label="Apex Digital Bank home">
+            <span class="brand-mark" aria-hidden="true">A</span>
+            <span class="brand-copy">
+                <strong>APEX</strong>
+                <small>DIGITAL BANK</small>
+            </span>
+        </a>
+
+        <nav class="header-navigation" aria-label="Main navigation">
+            <a href="./dashboard.html"><span aria-hidden="true">←</span> Back</a>
+            <a href="./dashboard.html"><span aria-hidden="true">⌂</span> Home</a>
+            <div class="terminal-info">
+                <p class="date-time">09 Oct 2026 · 14:30</p>
+                <p class="terminal-name">APEX DEMO TERMINAL</p>
+            </div>
+        </nav>
+    </header>
+
+    <main class="withdraw-main">
+        <div class="page-heading">
+            <h1>Transfer Funds.</h1>
+            <p>Send simulated funds to a fictional recipient. No real account lookup occurs.</p>
+        </div>
+
+        <div class="withdraw-layout">
+            <section class="withdraw-details" aria-label="Transfer details">
+                <div class="amount-card transfer-card">
+                    <label class="transfer-field-label" for="destination-account">Destination account · 10 digits</label>
+                    <input class="transfer-field" id="destination-account" type="text" inputmode="numeric" maxlength="10" value="9012342048">
+
+                    <label class="visually-hidden" for="destination-bank">Fictional destination bank</label>
+                    <select class="transfer-field transfer-bank" id="destination-bank">
+                        <option selected>Fictional bank: Apex Demo Bank</option>
+                        <option>Fictional bank: Unity Demo Bank</option>
+                        <option>Fictional bank: Sample Trust Bank</option>
+                    </select>
+
+                    <p class="recipient-verification"><span aria-hidden="true">✓</span> Morgan Lee · Simulated verification</p>
+
+                    <label class="transfer-field-label" for="transfer-amount">Transfer amount (NGN)</label>
+                    <input class="transfer-field transfer-amount" id="transfer-amount" type="text" inputmode="numeric" value="₦15,000">
+
+                    <div class="transfer-balance">
+                        <span>Available balance</span>
+                        <strong>₦125,000.00</strong>
+                    </div>
+                </div>
+
+                <p class="transfer-guidance">Use a valid 10-digit demo account and a positive amount within your available balance. Review is required before confirmation.</p>
+
+                <div class="withdraw-actions">
+                    <a class="cancel-main" href="./dashboard.html">Cancel</a>
+                    <button class="confirm-withdrawal" type="button">Review Transfer</button>
+                </div>
+            </section>
+
+            <section class="keypad-panel" aria-label="Numeric keypad">
+                <h2>Numeric entry</h2>
+                <div class="amount-keypad">
+                    <button type="button">1</button>
+                    <button type="button">2</button>
+                    <button type="button">3</button>
+                    <button type="button">4</button>
+                    <button type="button">5</button>
+                    <button type="button">6</button>
+                    <button type="button">7</button>
+                    <button type="button">8</button>
+                    <button type="button">9</button>
+                    <button class="keypad-utility" type="button">Clear</button>
+                    <button type="button">0</button>
+                    <button class="keypad-utility" type="button">Delete</button>
+                </div>
+                <div class="keypad-actions">
+                    <a href="./dashboard.html">Cancel</a>
+                    <button type="button">Enter</button>
+                </div>
+                <p class="keypad-help">Select an account or amount field before using the keypad.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="withdraw-footer">
+        <span>Educational simulator — no real transactions.</span>
+        <span class="session-status"><i aria-hidden="true"></i> Demo session · Connected</span>
+    </footer>
+</body>
+</html>
