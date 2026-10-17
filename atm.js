@@ -42,11 +42,11 @@ if (atmUsersContainer) {
 }
 
 
-if (nameDisplay, cardDisplay, balanceDisplay) {
+if (nameDisplay && cardDisplay) {
     if (activeProfile) {
         nameDisplay.innerText = activeProfile.username;
         cardDisplay.innerText = activeProfile.accountNo;
-        balanceDisplay.innerText = `₦${activeProfile.balance.toLocaleString()}`;
+        // balanceDisplay.innerText = `₦${activeProfile.balance.toLocaleString()}`;
     }   
 
     console.log(activeProfile);
