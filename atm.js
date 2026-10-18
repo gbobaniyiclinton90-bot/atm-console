@@ -9,7 +9,7 @@ const cardNumber = document.getElementById('card-number');
 const submitBtn = document.getElementById('submit-pin-btn');
 const alertMessage = document.getElementById('alert-message');
 const balanceDisplay = document.getElementById('balance');
-const balanceDisplay2 = document.getElementById('balance2');
+// const balanceDisplay2 = document.getElementById('balance2');
 const savedsession = localStorage.getItem('activeUserId');
 const activeProfile = ATM_USERS[savedsession];
 
@@ -50,9 +50,8 @@ if (nameDisplay && cardDisplay) {
         nameDisplay.innerText = activeProfile.username;
         cardDisplay.innerText = activeProfile.accountNo;
     }   
-    if(balanceDisplay && balanceDisplay2) {
+    if(balanceDisplay) {
         balanceDisplay.innerText = `₦${activeProfile.balance.toLocaleString()}`;
-        balanceDisplay2.innerText = `₦${activeProfile.balance.toLocaleString()}`;
     }
     
     
