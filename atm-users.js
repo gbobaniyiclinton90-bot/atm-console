@@ -11,7 +11,7 @@ const ATM_USERS = {
         pinCode: "2222",
         balance: 9840000
     },
-     "Tolani": {
+     "tolani": {
         username: "Tolani Akindele",
         accountNo: "Current Account · **** **** 5567",
         pinCode: "3333",
