@@ -9,7 +9,6 @@ const cardNumber = document.getElementById('card-number');
 const submitBtn = document.getElementById('submit-pin-btn');
 const alertMessage = document.getElementById('alert-message');
 const balanceDisplay = document.getElementById('balance');
-// const balanceDisplay2 = document.getElementById('balance2');
 const savedsession = localStorage.getItem('activeUserId');
 const activeProfile = ATM_USERS[savedsession];
 
@@ -25,6 +24,7 @@ const customAmountInput = document.getElementById('custom-amount');
 const quickAmountRadios = document.querySelectorAll('input[name="withdraw-amount"]');
 const confirmWithdrawBtn = document.querySelector('.confirm-withdrawal');
 const withdrawButton= document.querySelectorAll(".withdraw-button")
+
 
 
 
@@ -59,12 +59,16 @@ if (nameDisplay && cardDisplay) {
     console.log(savedsession);
 }
 
+if(cardDisplay){
+   cardDisplay.textContent= activeProfile.accountNo
+   console.log(savedsession)
+}
 
  if(balanceDisplay) {
         balanceDisplay.textContent = `₦${activeProfile.balance.toLocaleString()}`;
         console.log(savedsession)
 }
-    
+
 
 function checkCardLock() {
 
