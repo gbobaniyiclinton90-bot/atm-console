@@ -17,4 +17,5 @@ const ATM_USERS = {
         pinCode: "3333",
         balance: 7520000
     }
+    
 };

@@ -24,8 +24,7 @@ const LOCK_DURATION = 30000;
 const customAmountInput = document.getElementById('custom-amount');
 const quickAmountRadios = document.querySelectorAll('input[name="withdraw-amount"]');
 const confirmWithdrawBtn = document.querySelector('.confirm-withdrawal');
-const withdrawKeypadBtns = document.querySelectorAll('.amount-keypad button');
-
+const withdrawButton= document.querySelectorAll(".withdraw-button")
 
 
 
@@ -56,15 +55,16 @@ if (nameDisplay && cardDisplay) {
         nameDisplay.innerText = activeProfile.username;
         cardDisplay.innerText = activeProfile.accountNo;
     }   
-    if(balanceDisplay) {
-        balanceDisplay.innerText = `₦${activeProfile.balance.toLocaleString()}`;
-    }
     
-    
-    console.log(activeProfile);
+    console.log(savedsession);
 }
 
 
+ if(balanceDisplay) {
+        balanceDisplay.textContent = `₦${activeProfile.balance.toLocaleString()}`;
+        console.log(savedsession)
+}
+    
 
 function checkCardLock() {
 
@@ -173,6 +173,7 @@ btns.forEach((btn) => {
 });
 
 
+
 if (submitBtn) {
 
     submitBtn.addEventListener('click', (e) => {
@@ -224,6 +225,35 @@ if (submitBtn) {
     });
 }
 
+
+
+withdrawButton.forEach((wbtn) => {
+
+    wbtn.addEventListener('click', () => {
+
+        const value = wbtn.textContent.trim().toLowerCase();
+        let amount = customAmountInput.value.replace(/\D/g, '');
+
+        if (value === 'clear') {
+            amount = '';
+
+        } else if (value === 'delete') {
+
+            amount = amount.slice(0, -1);
+        } else if (/^\d$/.test(value)) {
+
+            amount += value;
+
+        }
+        customAmountInput.value = amount
+            ? `₦${Number(amount).toLocaleString()}`
+            : '₦';
+
+    });
+
+});
+
+
 if (customAmountInput && activeProfile){
     quickAmountRadios.forEach((radio) =>{
         if (radio.checked){
@@ -240,4 +270,6 @@ if (customAmountInput && activeProfile){
     customAmountInput.addEventListener('input',()=>{
         quickAmountRadios.forEach(radio => radio.checked = false)
     })
+       
+    
 }
