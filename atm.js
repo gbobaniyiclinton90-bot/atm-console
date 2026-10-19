@@ -21,6 +21,12 @@ let failedInput = Number(localStorage.getItem(attemptKey)) || 0;
 const LOCK_DURATION = 30000;
 
 
+const customAmountInput = document.getElementById('custom-amount');
+const quickAmountRadios = document.querySelectorAll('input[name="withdraw-amount"]');
+const confirmWithdrawBtn = document.querySelector('.confirm-withdrawal');
+const withdrawKeypadBtns = document.querySelectorAll('.amount-keypad button');
+
+
 
 
 
@@ -218,4 +224,20 @@ if (submitBtn) {
     });
 }
 
+if (customAmountInput && activeProfile){
+    quickAmountRadios.forEach((radio) =>{
+        if (radio.checked){
+            customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
+        }
+        radio.addEventListener('click', (()=>{
+            customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
+        }))
 
+    
+    }
+    )
+
+    customAmountInput.addEventListener('input',()=>{
+        quickAmountRadios.forEach(radio => radio.checked = false)
+    })
+}
