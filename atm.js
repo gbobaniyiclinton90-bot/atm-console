@@ -238,8 +238,8 @@ withdrawButton.forEach((wbtn) => {
             amount = '';
 
         } else if (value === 'delete') {
-
             amount = amount.slice(0, -1);
+
         } else if (/^\d$/.test(value)) {
 
             amount += value;
@@ -248,7 +248,6 @@ withdrawButton.forEach((wbtn) => {
         customAmountInput.value = amount
             ? `₦${Number(amount).toLocaleString()}`
             : '₦';
-
     });
 
 });
@@ -263,13 +262,11 @@ if (customAmountInput && activeProfile){
             customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
         }))
 
-    
     }
     )
 
     customAmountInput.addEventListener('input',()=>{
         quickAmountRadios.forEach(radio => radio.checked = false)
     })
-       
-    
+
 }
