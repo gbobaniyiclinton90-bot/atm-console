@@ -48,6 +48,13 @@ if (atmUsersContainer) {
     }
 }
 
+const balanceKey = `balance-${savedsession}`;
+const savedBalance = localStorage.getItem(balanceKey);
+
+if (activeProfile && savedBalance !== null) {
+    activeProfile.balance = Number(savedBalance);
+}
+
 
 if (nameDisplay && cardDisplay) {
     if (activeProfile) {
@@ -314,6 +321,8 @@ if (customAmountInput && withdrawMessage && confirmWithdrawBtn && activeProfile)
     });
 }
 
+
+
 if (confirmWithdrawBtn && customAmountInput && activeProfile) {
     confirmWithdrawBtn.addEventListener('click', () => {
 
@@ -328,13 +337,12 @@ if (confirmWithdrawBtn && customAmountInput && activeProfile) {
             customAmountInput.value.replace(/\D/g, '')
         );
 
-        // Deduct the withdrawal amount
+
         activeProfile.balance -= amount;
 
-        // Save the updated balance
+
         localStorage.setItem(balanceKey, activeProfile.balance);
 
-        // Save the transaction details for the receipt
         const transaction = {
             userId: savedsession,
             accountNo: activeProfile.accountNo,
@@ -349,10 +357,28 @@ if (confirmWithdrawBtn && customAmountInput && activeProfile) {
             JSON.stringify(transaction)
         );
 
-        // Navigate to the success page
         window.location.href = './withdraw_success.html';
     });
 }
 
+const savedTransaction = localStorage.getItem('lastWithdrawal');
+const transactionReference = document.getElementById("transaction-reference")
+const transactionDate = document.getElementById("transaction-date-time")
+const transactionAmount = document.getElementById("transaction-amount")
+
+const transaction = savedTransaction
+    ? JSON.parse(savedTransaction)
+    : null;
 
 
+if(transactionReference){
+    transactionReference.textContent = transaction.reference
+}
+
+if(transactionDate){
+    transactionDate.textContent =  new Date(transaction.dateTime).toLocaleString();
+}
+
+if(transactionAmount){
+    transactionAmount .textContent= `₦${transaction.amount.toLocaleString()}`;
+}
