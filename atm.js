@@ -230,6 +230,25 @@ if (submitBtn) {
 
 
 
+if (customAmountInput && activeProfile){
+    quickAmountRadios.forEach((radio) =>{
+        if (radio.checked){
+            customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
+        }
+        radio.addEventListener('click', (()=>{
+            customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
+            const isValid = validateWithdrawal(); 
+            confirmWithdrawBtn.hidden = !isValid;
+        }))
+    }
+    )
+
+    customAmountInput.addEventListener('input',()=>{
+        quickAmountRadios.forEach(radio => radio.checked = false)
+    })
+    
+}
+
 withdrawButton.forEach((wbtn) => {
 
     wbtn.addEventListener('click', () => {
@@ -251,9 +270,10 @@ withdrawButton.forEach((wbtn) => {
         customAmountInput.value = amount
             ? `₦${Number(amount).toLocaleString()}`
             : '₦';
+        const isValid = validateWithdrawal(); 
+        confirmWithdrawBtn.hidden = !isValid;
     });
-    const isValid = validateWithdrawal(); 
-    confirmWithdrawBtn.hidden = !isValid;
+
 
 });
 
@@ -270,7 +290,7 @@ function validateWithdrawal() {
 
     if (amount % 1000 !== 0) {
         withdrawMessage.textContent =
-            'This amount cannot be dispensed. ₦1,000 notes only.';
+            'This amount cannot be dispensed. This demo terminal supports ₦1,000 notes only.';
         return false;
     }
 
@@ -290,25 +310,49 @@ if (customAmountInput && withdrawMessage && confirmWithdrawBtn && activeProfile)
         const isValid = validateWithdrawal();
 
         confirmWithdrawBtn.hidden = !isValid;
+
+    });
+}
+
+if (confirmWithdrawBtn && customAmountInput && activeProfile) {
+    confirmWithdrawBtn.addEventListener('click', () => {
+
+        const isValid = validateWithdrawal();
+
+        if (!isValid) {
+            confirmWithdrawBtn.hidden = true;
+            return;
+        }
+
+        const amount = Number(
+            customAmountInput.value.replace(/\D/g, '')
+        );
+
+        // Deduct the withdrawal amount
+        activeProfile.balance -= amount;
+
+        // Save the updated balance
+        localStorage.setItem(balanceKey, activeProfile.balance);
+
+        // Save the transaction details for the receipt
+        const transaction = {
+            userId: savedsession,
+            accountNo: activeProfile.accountNo,
+            amount: amount,
+            updatedBalance: activeProfile.balance,
+            reference: `ATM-${Date.now()}`,
+            dateTime: new Date().toISOString()
+        };
+
+        localStorage.setItem(
+            'lastWithdrawal',
+            JSON.stringify(transaction)
+        );
+
+        // Navigate to the success page
+        window.location.href = './withdraw_success.html';
     });
 }
 
 
 
-if (customAmountInput && activeProfile){
-    quickAmountRadios.forEach((radio) =>{
-        if (radio.checked){
-            customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
-        }
-        radio.addEventListener('click', (()=>{
-            customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
-        }))
-
-    }
-    )
-
-    customAmountInput.addEventListener('input',()=>{
-        quickAmountRadios.forEach(radio => radio.checked = false)
-    })
-
-}
