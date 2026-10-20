@@ -287,7 +287,18 @@ body.deposit-page {
     cursor: pointer;
 }
 
+.confirm-deposit {
+    border: 0;
+    background: var(--withdraw-blue);
+    color: #fff;
+    cursor: pointer;
+}
+
 .withdraw-page .confirm-withdrawal[hidden] {
+    display: none;
+}
+
+.deposit-page .confirm-deposit[hidden] {
     display: none;
 }
 

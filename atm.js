@@ -25,7 +25,7 @@ const quickAmountRadios = document.querySelectorAll('input[name="withdraw-amount
 const confirmWithdrawBtn = document.querySelector('.confirm-withdrawal');
 const withdrawButton= document.querySelectorAll(".withdraw-button")
 const withdrawMessage = document.getElementById('withdraw-message');
-
+const confirmDepositBtn = document.querySelector(".confirm-deposit")
 
 
 if (atmUsersContainer) {
@@ -142,8 +142,6 @@ if (submitBtn && activeProfile) {
     }, 1000);
 }
 
-
-
 btns.forEach((btn) => {
 
     btn.addEventListener('click', (e) => {
@@ -235,27 +233,49 @@ if (submitBtn) {
     });
 }
 
+if (customAmountInput && activeProfile) {
 
+    quickAmountRadios.forEach((radio) => {
 
-if (customAmountInput && activeProfile){
-    quickAmountRadios.forEach((radio) =>{
-        if (radio.checked){
-            customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
+        if (radio.checked) {
+            customAmountInput.value =
+                `₦${Number(radio.value).toLocaleString()}`;
         }
-        radio.addEventListener('click', (()=>{
-            customAmountInput.value = `₦${Number(radio.value).toLocaleString()}`
-            const isValid = validateWithdrawal(); 
-            confirmWithdrawBtn.hidden = !isValid;
-        }))
-    }
-    )
 
-    customAmountInput.addEventListener('input',()=>{
-        quickAmountRadios.forEach(radio => radio.checked = false)
-    })
-    
+        radio.addEventListener('change', () => {
+
+            customAmountInput.value =
+                `₦${Number(radio.value).toLocaleString()}`;
+
+            if (confirmWithdrawBtn) {
+
+                const isValid = validateWithdrawal();
+
+                confirmWithdrawBtn.hidden = !isValid;
+
+            }
+
+            if (confirmDepositBtn) {
+
+                const isValidDeposit = validateDeposit();
+
+                confirmDepositBtn.hidden = !isValidDeposit;
+
+            }
+
+        });
+
+    });
+
+    customAmountInput.addEventListener('input', () => {
+
+        quickAmountRadios.forEach((radio) => {
+            radio.checked = false;
+        });
+
+    });
+
 }
-
 withdrawButton.forEach((wbtn) => {
 
     wbtn.addEventListener('click', () => {
@@ -277,11 +297,14 @@ withdrawButton.forEach((wbtn) => {
         customAmountInput.value = amount
             ? `₦${Number(amount).toLocaleString()}`
             : '₦';
+
         const isValid = validateWithdrawal(); 
         confirmWithdrawBtn.hidden = !isValid;
-    });
+       
+        const isValidDeposit = validateDeposit();
+        confirmWithdrawBtn.hidden = !isValidDeposit
 
-
+});
 });
 
 
@@ -312,16 +335,6 @@ function validateWithdrawal() {
 }
 
 
-if (customAmountInput && withdrawMessage && confirmWithdrawBtn && activeProfile) {
-    customAmountInput.addEventListener('input', () => {
-        const isValid = validateWithdrawal();
-
-        confirmWithdrawBtn.hidden = !isValid;
-
-    });
-}
-
-
 
 if (confirmWithdrawBtn && customAmountInput && activeProfile) {
     confirmWithdrawBtn.addEventListener('click', () => {
@@ -339,7 +352,6 @@ if (confirmWithdrawBtn && customAmountInput && activeProfile) {
 
 
         activeProfile.balance -= amount;
-
 
         localStorage.setItem(balanceKey, activeProfile.balance);
 
@@ -381,4 +393,65 @@ if(transactionDate){
 
 if(transactionAmount){
     transactionAmount .textContent= `₦${transaction.amount.toLocaleString()}`;
+}
+
+
+
+function validateDeposit() {
+    const amount = Number(
+        customAmountInput.value.replace(/\D/g, '')
+    );
+
+    if (amount <= 0) {
+        withdrawMessage.textContent = 'Please enter a valid amount.';
+        return false;
+    }
+
+    if (amount < 1000) {
+        withdrawMessage.textContent =
+            'This amount cannot be deposited. This demo terminal supports ₦1,000 notes upward.';
+        return false;
+    }
+
+    withdrawMessage.textContent = '';
+    return true;
+}
+
+
+if (confirmDepositBtn && customAmountInput && activeProfile) {
+    
+    confirmDepositBtn.addEventListener('click', () => {
+
+        const isValidDeposit = validateDeposit();
+
+        if (!isValidDeposit) {
+            confirmDepositBtn.hidden = true;
+            return;
+        }
+
+        const amount = Number(
+            customAmountInput.value.replace(/\D/g, '')
+        );
+
+
+        activeProfile.balance += amount;
+
+        localStorage.setItem(balanceKey, activeProfile.balance);
+
+        const transaction = {
+            userId: savedsession,
+            accountNo: activeProfile.accountNo,
+            amount: amount,
+            updatedBalance: activeProfile.balance,
+            reference: `ATM-${Date.now()}`,
+            dateTime: new Date().toISOString()
+        };
+
+        localStorage.setItem(
+            'lastWithdrawal',
+            JSON.stringify(transaction)
+        );
+
+        window.location.href = './deposit-withdraw.html';
+    });
 }

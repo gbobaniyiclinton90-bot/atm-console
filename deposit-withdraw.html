@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Successful | Digital ATM</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./withdraw_success.css">
+</head>
+<body class="withdraw-success-page">
+    <header class="top-navbar">
+        <div class="logo-area">
+            <p>DIGITAL ATM</p>
+        </div>
+        <div class="terminal-info">
+            <p class="date-time" id="terminal-date-time">09 Oct 2026 • 14:30</p>
+            <p class="terminal-name">Dataslid DEMO TERMINAL</p>
+        </div>
+    </header>
+
+    <main class="success-main">
+        <div class="success-heading">
+            <h1>Transaction confirmation.</h1>
+            <p>A clear result for your simulated session.</p>
+        </div>
+
+        <div class="success-layout">
+            <section class="success-message" aria-labelledby="success-title">
+                <span class="success-check" aria-hidden="true">✓</span>
+                <h2 id="success-title">Deposit successful.</h2>
+                <p>Your simulated cash is ready. No physical money has been dispensed.</p>
+            </section>
+
+            <section class="transaction-column" aria-label="Withdrawal receipt">
+                <div class="transaction-card">
+                    <p class="transaction-label">Amount dispensed (simulated)</p>
+                    <p class="transaction-amount" id="transaction-amount"></p>
+
+                    <dl class="transaction-details">
+                        <div>
+                            <dt>Account</dt>
+                            <dd id="card-details"></dd>
+                        </div>
+                        <div>
+                            <dt>Updated balance</dt>
+                            <dd id="balance"></dd>
+                        </div>
+                        <div>
+                            <dt>Simulated reference</dt>
+                            <dd id="transaction-reference"></dd>
+                        </div>
+                        <div>
+                            <dt>Date / time</dt>
+                            <dd id="transaction-date-time"></dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <nav class="success-actions" aria-label="Next steps">
+                    <a class="dashboard-action" href="./dashboard.html">
+                        <span class="home-icon" aria-hidden="true"></span>
+                        Return to Dashboard
+                    </a>
+                    <a class="exit-action" href="./welcome_page.html">
+                        <span class="exit-icon" aria-hidden="true">↪</span>
+                        Exit / Remove Card
+                    </a>
+                </nav>
+            </section>
+        </div>
+    </main>
+    <footer class="withdraw-footer">
+        <span>Educational simulator — no real transactions.</span>
+        <span class="session-status"><i aria-hidden="true"></i> Demo session · Connected</span>
+    </footer>
+</body>
+<script src="./atm-users.js"></script>
+<script src="./atm.js"></script>
+
+</html>
