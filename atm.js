@@ -24,8 +24,7 @@ const customAmountInput = document.getElementById('custom-amount');
 const quickAmountRadios = document.querySelectorAll('input[name="withdraw-amount"]');
 const confirmWithdrawBtn = document.querySelector('.confirm-withdrawal');
 const withdrawButton= document.querySelectorAll(".withdraw-button")
-
-
+const withdrawMessage = document.getElementById('withdraw-message');
 
 
 
@@ -253,8 +252,47 @@ withdrawButton.forEach((wbtn) => {
             ? `₦${Number(amount).toLocaleString()}`
             : '₦';
     });
+    const isValid = validateWithdrawal(); 
+    confirmWithdrawBtn.hidden = !isValid;
 
 });
+
+
+function validateWithdrawal() {
+    const amount = Number(
+        customAmountInput.value.replace(/\D/g, '')
+    );
+
+    if (amount <= 0) {
+        withdrawMessage.textContent = 'Please enter a valid amount.';
+        return false;
+    }
+
+    if (amount % 1000 !== 0) {
+        withdrawMessage.textContent =
+            'This amount cannot be dispensed. ₦1,000 notes only.';
+        return false;
+    }
+
+    if (amount > activeProfile.balance) {
+        withdrawMessage.textContent =
+            `Insufficient funds. Your available balance is ₦${activeProfile.balance.toLocaleString()}. Please adjust the amount to continue.`;
+        return false;
+    }
+
+    withdrawMessage.textContent = '';
+    return true;
+}
+
+
+if (customAmountInput && withdrawMessage && confirmWithdrawBtn && activeProfile) {
+    customAmountInput.addEventListener('input', () => {
+        const isValid = validateWithdrawal();
+
+        confirmWithdrawBtn.hidden = !isValid;
+    });
+}
+
 
 
 if (customAmountInput && activeProfile){

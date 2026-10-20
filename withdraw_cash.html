@@ -63,14 +63,15 @@
                     <p class="denomination-note">Demo denomination rule: ₦1,000 notes only. Enter a positive multiple of ₦1,000; no transaction fee.</p>
                 </div>
 
-                <aside class="simulation-notice">
-                    <span class="notice-icon" aria-hidden="true">i</span>
-                    <p>Cash dispensing is simulated. No physical cash will be released.</p>
+                <aside class="">
+                    <p id="withdraw-message" role="status" aria-live="polite"></p>
                 </aside>
 
                 <div class="withdraw-actions">
-                    <a class="cancel-main" href="./dashboard.html">Cancel</a>
-                    <a class="confirm-withdrawal" href="./withdraw_success.html">Confirm Withdrawal</a>
+                   <a class="cancel-main" href="./dashboard.html">Cancel</a>
+                </div>
+                <div class="withdraw-actions">
+                    <button class="confirm-withdrawal" type="button" hidden> Confirm Withdrawal </button>
                 </div>
             </section>
 
