@@ -22,7 +22,7 @@
     <main class="transactions-main">
         <div class="page-heading">
             <h1>Transaction History.</h1>
-            <p><span id="names">Alex Johnson</span> · Savings Account · <span id="card-details">**** **** 4821</span> · All activity is simulated.</p>
+            <p><span id="names"></span>  <span id="card-details"></span> · All activity is simulated.</p>
         </div>
 
         <section class="transaction-history" aria-label="Transaction history">
@@ -36,7 +36,6 @@
                 <label for="filter-deposits">Deposits</label>
                 <label for="filter-withdrawals">Withdrawals</label>
                 <label for="filter-transfers">Transfers</label>
-                <span class="filter-note">07–09 Oct 2026</span>
             </div>
 
             <div class="transaction-card" id="transaction-list">
@@ -94,5 +93,7 @@
         <span>Educational simulator — no real transactions.</span>
         <span class="session-status"><i aria-hidden="true"></i> Demo session · Connected</span>
     </footer>
+    <script src="./atm-users.js"></script>
+    <script src="./atm.js"></script>
 </body>
 </html>
