@@ -247,7 +247,7 @@
 
 #filter-withdrawals:checked ~ .transaction-card .table-scroll,
 #filter-transfers:checked ~ .transaction-card .table-scroll {
-    display: none;
+    display: flex;
 }
 
 #filter-withdrawals:checked ~ .transaction-card .empty-state,
