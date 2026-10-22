@@ -26,8 +26,8 @@
         </div>
 
         <section class="transaction-history" aria-label="Transaction history">
-            <input class="filter-input" type="radio" name="transaction-filter" id="filter-all">
-            <input class="filter-input" type="radio" name="transaction-filter" id="filter-deposits" checked>
+            <input class="filter-input" type="radio" name="transaction-filter" id="filter-all" checked>
+            <input class="filter-input" type="radio" name="transaction-filter" id="filter-deposits">
             <input class="filter-input" type="radio" name="transaction-filter" id="filter-withdrawals">
             <input class="filter-input" type="radio" name="transaction-filter" id="filter-transfers">
 
@@ -57,7 +57,9 @@
                 </div>
 
                 <div class="empty-state" id="empty-transactions">
-
+                    <span class="receipt-icon" aria-hidden="true"></span>
+                    <h2>No transactions yet</h2>
+                    <p>Your fictional account has no activity in this category. Try a simulated deposit, withdrawal or transfer to see it here.</p>
                 </div>
             </div>
 

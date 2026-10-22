@@ -1,3 +1,4 @@
+
 const atmUsersContainer = document.getElementById('atmUsersContainer');
 const nameDisplay = document.getElementById('names');
 const cardDisplay = document.getElementById('card-details');
@@ -23,6 +24,11 @@ const confirmWithdrawBtn = document.querySelector('.confirm-withdrawal');
 const withdrawButton= document.querySelectorAll(".withdraw-button")
 const withdrawMessage = document.getElementById('withdraw-message');
 const confirmDepositBtn = document.querySelector(".confirm-deposit")
+
+
+
+
+
 
 
 if (atmUsersContainer) {
@@ -366,11 +372,11 @@ if (confirmWithdrawBtn && customAmountInput && activeProfile) {
             'lastWithdrawal',
             JSON.stringify(transaction)
         );
-     const savedTransactions = JSON.parse(localStorage.getItem('transactions') || '[]');
+     const allTransactions = JSON.parse(localStorage.getItem('transactions') || '[]');
 
-     savedTransactions.push(transaction);
+     allTransactions.push(transaction);
 
-     localStorage.setItem( 'transactions',JSON.stringify(savedTransactions));
+     localStorage.setItem( 'transactions',JSON.stringify(allTransactions));
 
      window.location.href = './withdraw_success.html';
     });
@@ -440,12 +446,12 @@ if (confirmDepositBtn && customAmountInput && activeProfile) {
             JSON.stringify(transaction)
         );
 
-     const savedTransactions =
+     const allTransactions =
        JSON.parse(localStorage.getItem('transactions') || '[]');
 
-     savedTransactions.push(transaction);
+     allTransactions.push(transaction);
 
-     localStorage.setItem( 'transactions',JSON.stringify(savedTransactions));
+     localStorage.setItem( 'transactions',JSON.stringify(allTransactions));
 
      window.location.href = './deposit-success.html';
     });
@@ -492,4 +498,157 @@ if(transactionAmount && depositTransaction){
 }
 
 
+const transactionRows = document.getElementById('transaction-rows');
+const emptyTransactions = document.getElementById('empty-transactions');
+const transactionTable = document.getElementById('transaction-table');
 
+const filterAll = document.getElementById('filter-all');
+const filterDeposits = document.getElementById('filter-deposits');
+const filterWithdrawals = document.getElementById('filter-withdrawals');
+const filterTransfers = document.getElementById('filter-transfers');
+
+if (
+    transactionRows &&
+    emptyTransactions &&
+    transactionTable &&
+    filterAll &&
+    filterDeposits &&
+    filterWithdrawals &&
+    filterTransfers
+) {
+
+    const savedTransactions = JSON.parse(
+        localStorage.getItem('transactions') || '[]'
+    );
+
+    const userTransactions = savedTransactions.filter(
+        transaction => transaction.userId === savedsession
+    );
+
+    function displayTransactions(transactions) {
+
+        transactionRows.innerHTML = '';
+
+        transactions.forEach((transaction) => {
+
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td data-label="Transaction / Date">
+                    <strong>${transaction.type}</strong>
+                    <span>${new Date(transaction.dateTime).toLocaleString()}</span>
+                </td>
+
+                <td data-label="Reference">
+                    ${transaction.reference}
+                </td>
+
+                <td class="transaction-amount" data-label="Amount">
+                    ${transaction.type === 'Deposit' ? '+' : transaction.type === 'Withdrawal' ? '−' : ''}
+                    ₦${transaction.amount.toLocaleString()}
+                </td>
+
+                <td data-label="Status">
+                    <span class="transaction-status">
+                        Completed · Demo
+                    </span>
+                </td>
+            `;
+
+            transactionRows.appendChild(row);
+
+        });
+
+        if (transactions.length === 0) {
+            emptyTransactions.hidden = false;
+            transactionTable.hidden = true;
+        } else {
+            emptyTransactions.hidden = true;
+            transactionTable.hidden = false;
+        }
+
+    }
+
+    function applyTransactionFilter() {
+
+        let filteredTransactions = userTransactions;
+
+        if (filterDeposits.checked) {
+
+            filteredTransactions = userTransactions.filter(
+                transaction => transaction.type === 'Deposit'
+            );
+
+        } else if (filterWithdrawals.checked) {
+
+            filteredTransactions = userTransactions.filter(
+                transaction => transaction.type === 'Withdrawal'
+            );
+
+        } else if (filterTransfers.checked) {
+
+            filteredTransactions = userTransactions.filter(
+                transaction => transaction.type === 'Transfer'
+            );
+
+        }
+
+        displayTransactions(filteredTransactions);
+
+    }
+
+    filterAll.addEventListener('change', applyTransactionFilter);
+    filterDeposits.addEventListener('change', applyTransactionFilter);
+    filterWithdrawals.addEventListener('change', applyTransactionFilter);
+    filterTransfers.addEventListener('change', applyTransactionFilter);
+
+    applyTransactionFilter();
+
+}
+
+
+// if (transactionRows && emptyTransactions) {
+
+//     const savedTransactions = JSON.parse(
+//         localStorage.getItem('transactions') || '[]'
+//     );
+
+//     const userTransactions = savedTransactions.filter(
+//         transaction => transaction.userId === savedsession
+//     );
+
+//     userTransactions.forEach((transaction) => {
+
+//         const row = document.createElement('tr');
+
+//         row.innerHTML = `
+//             <td data-label="Transaction / Date">
+//                 <strong>${transaction.type}</strong>
+//                 <span>${new Date(transaction.dateTime).toLocaleString()}</span>
+//             </td>
+
+//             <td data-label="Reference">
+//                 ${transaction.reference}</td>
+
+//             <td class="transaction-amount" data-label="Amount">
+//                 ₦${transaction.amount.toLocaleString()}
+//             </td>
+
+//             <td data-label="Status">
+//                 <span class="transaction-status">
+//                     Completed · Demo
+//                 </span>
+//             </td>
+//         `;
+
+//         transactionRows.appendChild(row);
+//     });
+
+//     if (userTransactions.length === 0) {
+//         emptyTransactions.hidden = false;
+//         transactionRows.closest('table').hidden = true;
+//     } else {
+//         emptyTransactions.hidden = true;
+//         transactionRows.closest('table').hidden = false;
+//     }
+// }
