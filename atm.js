@@ -491,3 +491,5 @@ if(transactionAmount && depositTransaction){
     transactionAmount .textContent= `₦${depositTransaction.amount.toLocaleString()}`;
 }
 
+
+

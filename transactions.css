@@ -1,0 +1,344 @@
+.transactions-page {
+    color: #172d4e;
+}
+
+.transactions-main {
+    width: min(960px, calc(100% - 64px));
+    flex: 1;
+    margin: 32px auto 26px;
+}
+
+.transactions-main .page-heading {
+    margin-bottom: 24px;
+}
+
+.transactions-main .page-heading h1 {
+    margin-bottom: 6px;
+    color: #172d4e;
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.transactions-main .page-heading p {
+    color: #657b99;
+    font-size: 16px;
+}
+
+.transaction-history {
+    position: relative;
+}
+
+.filter-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.filter-tabs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.filter-tabs label {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 19px;
+    border: 1px solid #d9e2ee;
+    border-radius: 24px;
+    background: #fff;
+    color: #172d4e;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.filter-tabs label:hover {
+    border-color: #102b45;
+}
+
+#filter-all:focus-visible ~ .filter-tabs label[for="filter-all"],
+#filter-deposits:focus-visible ~ .filter-tabs label[for="filter-deposits"],
+#filter-withdrawals:focus-visible ~ .filter-tabs label[for="filter-withdrawals"],
+#filter-transfers:focus-visible ~ .filter-tabs label[for="filter-transfers"] {
+    outline: 3px solid #13b5a5;
+    outline-offset: 3px;
+}
+
+#filter-all:checked ~ .filter-tabs label[for="filter-all"],
+#filter-deposits:checked ~ .filter-tabs label[for="filter-deposits"],
+#filter-withdrawals:checked ~ .filter-tabs label[for="filter-withdrawals"],
+#filter-transfers:checked ~ .filter-tabs label[for="filter-transfers"] {
+    border-color: #102b45;
+    background: #102b45;
+    color: #fff;
+}
+
+.filter-note {
+    margin-left: 1px;
+    color: #657b99;
+    font-size: 13px;
+}
+
+.transaction-card {
+    min-height: 330px;
+    overflow: hidden;
+    border: 1px solid #d9e2ee;
+    border-radius: 20px;
+    background: #fff;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.transaction-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: left;
+}
+
+.transaction-table th:nth-child(1),
+.transaction-table td:nth-child(1) {
+    width: 34%;
+}
+
+.transaction-table th:nth-child(2),
+.transaction-table td:nth-child(2) {
+    width: 24%;
+}
+
+.transaction-table th:nth-child(3),
+.transaction-table td:nth-child(3) {
+    width: 19%;
+}
+
+.transaction-table th:nth-child(4),
+.transaction-table td:nth-child(4) {
+    width: 23%;
+}
+
+.transaction-table thead {
+    background: #eaf0f7;
+}
+
+.transaction-table th {
+    height: 40px;
+    padding: 0 19px;
+    color: #172d4e;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.transaction-table td {
+    height: 58px;
+    padding: 9px 19px;
+    border-top: 1px solid #d9e2ee;
+    color: #657b99;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.transaction-table td:first-child strong,
+.transaction-table td:first-child span {
+    display: block;
+}
+
+.transaction-table td:first-child strong {
+    margin-bottom: 3px;
+    color: #172d4e;
+    font-size: 15px;
+}
+
+.transaction-table td:first-child span {
+    font-size: 12px;
+}
+
+.transaction-table .transaction-amount {
+    color: #08783a;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.transaction-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #08783a;
+    font-size: 12px;
+}
+
+.transaction-status::before {
+    width: 11px;
+    height: 11px;
+    display: inline-grid;
+    place-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    content: "✓";
+    font-size: 8px;
+    line-height: 1;
+}
+
+.empty-state {
+    min-height: 288px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 36px 20px;
+    text-align: center;
+}
+
+.receipt-icon {
+    position: relative;
+    width: 33px;
+    height: 42px;
+    margin-bottom: 18px;
+    border: 1.5px solid #7186a2;
+    border-radius: 3px;
+}
+
+.receipt-icon::before,
+.receipt-icon::after {
+    position: absolute;
+    left: 7px;
+    width: 14px;
+    height: 1px;
+    background: #7186a2;
+    content: "";
+}
+
+.receipt-icon::before {
+    top: 12px;
+    box-shadow: 0 8px #7186a2, 0 16px #7186a2;
+}
+
+.receipt-icon::after {
+    top: -1px;
+    left: -2px;
+    width: 4px;
+    height: 42px;
+    background: repeating-linear-gradient(to bottom, #fff 0 4px, #7186a2 4px 6px);
+}
+
+.empty-state h2 {
+    margin-bottom: 14px;
+    color: #172d4e;
+    font-size: 23px;
+}
+
+.empty-state p {
+    max-width: 520px;
+    color: #657b99;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+#filter-withdrawals:checked ~ .transaction-card .table-scroll,
+#filter-transfers:checked ~ .transaction-card .table-scroll {
+    display: none;
+}
+
+#filter-withdrawals:checked ~ .transaction-card .empty-state,
+#filter-transfers:checked ~ .transaction-card .empty-state {
+    display: flex;
+}
+
+.transactions-bottom {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.transactions-bottom .dashboard-button {
+    flex-shrink: 0;
+}
+
+.transaction-summary {
+    color: #657b99;
+    font-size: 13px;
+    text-align: right;
+}
+
+.summary-all,
+.summary-withdrawals,
+.summary-transfers {
+    display: none;
+}
+
+#filter-all:checked ~ .transactions-bottom .summary-all,
+#filter-deposits:checked ~ .transactions-bottom .summary-deposits,
+#filter-withdrawals:checked ~ .transactions-bottom .summary-withdrawals,
+#filter-transfers:checked ~ .transactions-bottom .summary-transfers {
+    display: block;
+}
+
+@media (max-width: 700px) {
+    .transactions-main {
+        width: calc(100% - 40px);
+        margin: 28px auto 20px;
+    }
+
+    .transactions-main .page-heading h1 {
+        font-size: 28px;
+    }
+
+    .filter-tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+
+    .filter-tabs label {
+        min-height: 40px;
+        padding: 0 15px;
+        font-size: 14px;
+    }
+
+    .filter-note {
+        flex-basis: 100%;
+    }
+
+    .transaction-card {
+        min-height: 300px;
+        border-radius: 16px;
+    }
+
+    .transaction-table {
+        min-width: 680px;
+    }
+
+    .transactions-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0 4px;
+    }
+
+    .transaction-summary {
+        text-align: left;
+    }
+}
+
+@media (max-width: 420px) {
+    .transactions-main .page-heading p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .filter-tabs label {
+        padding: 0 12px;
+    }
+}
