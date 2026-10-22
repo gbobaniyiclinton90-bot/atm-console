@@ -1,11 +1,8 @@
 const atmUsersContainer = document.getElementById('atmUsersContainer');
-const cardboxes = document.querySelectorAll('.d_account');
 const nameDisplay = document.getElementById('names');
 const cardDisplay = document.getElementById('card-details');
 const btns = document.querySelectorAll(".button");
 const pinInputs = document.querySelectorAll('.displayInput');
-const useerName = document.getElementById('user-name');
-const cardNumber = document.getElementById('card-number');
 const submitBtn = document.getElementById('submit-pin-btn');
 const alertMessage = document.getElementById('alert-message');
 const balanceDisplay = document.getElementById('balance');
@@ -248,19 +245,13 @@ if (customAmountInput && activeProfile) {
                 `₦${Number(radio.value).toLocaleString()}`;
 
             if (confirmWithdrawBtn) {
-
                 const isValid = validateWithdrawal();
-
                 confirmWithdrawBtn.hidden = !isValid;
-
             }
 
             if (confirmDepositBtn) {
-
                 const isValidDeposit = validateDeposit();
-
                 confirmDepositBtn.hidden = !isValidDeposit;
-
             }
 
         });
@@ -276,6 +267,8 @@ if (customAmountInput && activeProfile) {
     });
 
 }
+
+
 withdrawButton.forEach((wbtn) => {
 
     wbtn.addEventListener('click', () => {
@@ -298,14 +291,21 @@ withdrawButton.forEach((wbtn) => {
             ? `₦${Number(amount).toLocaleString()}`
             : '₦';
 
-        const isValid = validateWithdrawal(); 
-        confirmWithdrawBtn.hidden = !isValid;
-       
-        const isValidDeposit = validateDeposit();
-        confirmWithdrawBtn.hidden = !isValidDeposit
+
+        if (confirmWithdrawBtn) {
+            const isValid = validateWithdrawal();
+            confirmWithdrawBtn.hidden = !isValid;
+        }
+
+        if (confirmDepositBtn) {
+            const isValidDeposit = validateDeposit();
+            confirmDepositBtn.hidden = !isValidDeposit;
+        }
 
 });
 });
+
+
 
 
 function validateWithdrawal() {
@@ -373,28 +373,6 @@ if (confirmWithdrawBtn && customAmountInput && activeProfile) {
     });
 }
 
-const savedTransaction = localStorage.getItem('lastWithdrawal');
-const transactionReference = document.getElementById("transaction-reference")
-const transactionDate = document.getElementById("transaction-date-time")
-const transactionAmount = document.getElementById("transaction-amount")
-
-const transaction = savedTransaction
-    ? JSON.parse(savedTransaction)
-    : null;
-
-
-if(transactionReference){
-    transactionReference.textContent = transaction.reference
-}
-
-if(transactionDate){
-    transactionDate.textContent =  new Date(transaction.dateTime).toLocaleString();
-}
-
-if(transactionAmount){
-    transactionAmount .textContent= `₦${transaction.amount.toLocaleString()}`;
-}
-
 
 
 function validateDeposit() {
@@ -410,6 +388,12 @@ function validateDeposit() {
     if (amount < 1000) {
         withdrawMessage.textContent =
             'This amount cannot be deposited. This demo terminal supports ₦1,000 notes upward.';
+        return false;
+    }
+
+    if (amount > 200000) {
+        withdrawMessage.textContent =
+            'Configured demo limit: ₦200,000 per deposit.';
         return false;
     }
 
@@ -448,10 +432,52 @@ if (confirmDepositBtn && customAmountInput && activeProfile) {
         };
 
         localStorage.setItem(
-            'lastWithdrawal',
+            'lastDeposit',
             JSON.stringify(transaction)
         );
 
         window.location.href = './deposit-withdraw.html';
     });
 }
+
+const withdrawalSavedTransaction = localStorage.getItem('lastWithdrawal');
+const transactionReference = document.getElementById("transaction-reference")
+const transactionDate = document.getElementById("transaction-date-time")
+const transactionAmount = document.getElementById("transaction-amount")
+
+const withdrawalTransaction = withdrawalSavedTransaction
+    ? JSON.parse(withdrawalSavedTransaction)
+    : null;
+
+
+if(transactionReference){
+    transactionReference.textContent = withdrawalTransaction.reference
+}
+
+if(transactionDate){
+    transactionDate.textContent =  new Date(withdrawalTransaction.dateTime).toLocaleString();
+}
+
+if(transactionAmount){
+    transactionAmount .textContent= `₦${withdrawalSavedTransaction.amount.toLocaleString()}`;
+}
+
+const depositSavedTrasaction = localStorage.getItem('lastDeposit')
+
+const depositTransaction = depositSavedTrasaction
+    ? JSON.parse(depositSavedTrasaction)
+    : null;
+
+
+if(transactionReference){
+    transactionReference.textContent = depositTransaction.reference
+}
+
+if(transactionDate){
+    transactionDate.textContent =  new Date(depositTransaction.dateTime).toLocaleString();
+}
+
+if(transactionAmount){
+    transactionAmount .textContent= `₦${depositTransaction.amount.toLocaleString()}`;
+}
+
