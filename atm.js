@@ -355,6 +355,7 @@ if (confirmWithdrawBtn && customAmountInput && activeProfile) {
         const transaction = {
             userId: savedsession,
             accountNo: activeProfile.accountNo,
+            type: 'Withdrawal',
             amount: amount,
             updatedBalance: activeProfile.balance,
             reference: `ATM-${Date.now()}`,
@@ -365,8 +366,13 @@ if (confirmWithdrawBtn && customAmountInput && activeProfile) {
             'lastWithdrawal',
             JSON.stringify(transaction)
         );
+     const savedTransactions = JSON.parse(localStorage.getItem('transactions') || '[]');
 
-        window.location.href = './withdraw_success.html';
+     savedTransactions.push(transaction);
+
+     localStorage.setItem( 'transactions',JSON.stringify(savedTransactions));
+
+     window.location.href = './withdraw_success.html';
     });
 }
 
@@ -422,6 +428,7 @@ if (confirmDepositBtn && customAmountInput && activeProfile) {
         const transaction = {
             userId: savedsession,
             accountNo: activeProfile.accountNo,
+            type: 'Deposit',
             amount: amount,
             updatedBalance: activeProfile.balance,
             reference: `ATM-${Date.now()}`,
@@ -433,7 +440,14 @@ if (confirmDepositBtn && customAmountInput && activeProfile) {
             JSON.stringify(transaction)
         );
 
-        window.location.href = './deposit-withdraw.html';
+     const savedTransactions =
+       JSON.parse(localStorage.getItem('transactions') || '[]');
+
+     savedTransactions.push(transaction);
+
+     localStorage.setItem( 'transactions',JSON.stringify(savedTransactions));
+
+     window.location.href = './deposit-success.html';
     });
 }
 
@@ -447,16 +461,15 @@ const withdrawalTransaction = withdrawalSavedTransaction
     : null;
 
 
-if(transactionReference){
-    transactionReference.textContent = withdrawalTransaction.reference
+if (transactionReference && withdrawalTransaction) {
+    transactionReference.textContent =   withdrawalTransaction.reference;
 }
-
-if(transactionDate){
+if( transactionDate && withdrawalTransaction){
     transactionDate.textContent =  new Date(withdrawalTransaction.dateTime).toLocaleString();
 }
 
-if(transactionAmount){
-    transactionAmount .textContent= `₦${withdrawalSavedTransaction.amount.toLocaleString()}`;
+if(transactionAmount && withdrawalTransaction){
+    transactionAmount .textContent= `₦${withdrawalTransaction.amount.toLocaleString()}`;
 }
 
 const depositSavedTrasaction = localStorage.getItem('lastDeposit')
@@ -466,15 +479,15 @@ const depositTransaction = depositSavedTrasaction
     : null;
 
 
-if(transactionReference){
+if(transactionReference && depositTransaction){
     transactionReference.textContent = depositTransaction.reference
 }
 
-if(transactionDate){
+if(transactionDate && depositTransaction){
     transactionDate.textContent =  new Date(depositTransaction.dateTime).toLocaleString();
 }
 
-if(transactionAmount){
+if(transactionAmount && depositTransaction){
     transactionAmount .textContent= `₦${depositTransaction.amount.toLocaleString()}`;
 }
 
