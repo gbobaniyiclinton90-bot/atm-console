@@ -53,24 +53,21 @@ if (activeProfile && savedBalance !== null) {
 }
 
 
-if (nameDisplay && cardDisplay) {
-    if (activeProfile) {
-        nameDisplay.innerText = activeProfile.username;
-        cardDisplay.innerText = activeProfile.accountNo;
-    }   
-    
-    console.log(savedsession);
+if (activeProfile) {
+    if (nameDisplay) {
+        nameDisplay.textContent = activeProfile.username;
+    }
+
+    if (cardDisplay) {
+        cardDisplay.textContent = activeProfile.accountNo;
+    }
+
+    if (balanceDisplay) {
+        balanceDisplay.textContent =
+            `₦${activeProfile.balance.toLocaleString()}`;
+    }
 }
 
-if(cardDisplay){
-   cardDisplay.textContent= activeProfile.accountNo
-   console.log(savedsession)
-}
-
- if(balanceDisplay) {
-        balanceDisplay.textContent = `₦${activeProfile.balance.toLocaleString()}`;
-        console.log(savedsession)
-}
 
 
 function checkCardLock() {
