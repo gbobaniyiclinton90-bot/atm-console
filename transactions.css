@@ -1,3 +1,6 @@
+[hidden] {
+    display: none;
+}
 .transactions-page {
     color: #172d4e;
 }
@@ -245,15 +248,7 @@
     line-height: 1.45;
 }
 
-#filter-withdrawals:checked ~ .transaction-card .table-scroll,
-#filter-transfers:checked ~ .transaction-card .table-scroll {
-    display: flex;
-}
 
-#filter-withdrawals:checked ~ .transaction-card .empty-state,
-#filter-transfers:checked ~ .transaction-card .empty-state {
-    display: flex;
-}
 
 .transactions-bottom {
     min-height: 80px;
