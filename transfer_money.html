@@ -38,14 +38,12 @@
                         <option>Fictional bank: Sample Trust Bank</option>
                     </select>
 
-                    <p class="recipient-verification"><span aria-hidden="true">✓</span> Morgan Lee · Simulated verification</p>
-
                     <label class="transfer-field-label" for="transfer-amount">Transfer amount (NGN)</label>
-                    <input class="transfer-field transfer-amount" id="transfer-amount" type="text" inputmode="numeric" value="₦15,000">
+                    <input class="transfer-field transfer-amount" id="custom-amount"  type="text" inputmode="numeric" value="₦15,000">
 
                     <div class="transfer-balance">
                         <span>Available balance</span>
-                        <strong>₦125,000.00</strong>
+                        <strong id="balance"></strong>
                     </div>
                 </div>
 
@@ -55,29 +53,30 @@
                     <a class="cancel-main" href="./dashboard.html">Cancel</a>
                     <button class="confirm-withdrawal" type="button">Transfer</button>
                 </div>
+                 <aside class="">
+                    <p id="transfer-message" role="status" aria-live="polite"></p>
+                </aside>
             </section>
 
             <section class="keypad-panel" aria-label="Numeric keypad">
                 <h2>Numeric entry</h2>
                 <div class="amount-keypad">
-                    <button type="button">1</button>
-                    <button type="button">2</button>
-                    <button type="button">3</button>
-                    <button type="button">4</button>
-                    <button type="button">5</button>
-                    <button type="button">6</button>
-                    <button type="button">7</button>
-                    <button type="button">8</button>
-                    <button type="button">9</button>
-                    <button class="keypad-utility" type="button">Clear</button>
-                    <button type="button">0</button>
-                    <button class="keypad-utility" type="button">Delete</button>
+                    <button class="withdraw-button" type="button">1</button>
+                    <button class="withdraw-button" type="button">2</button>
+                    <button class="withdraw-button" type="button">3</button>
+                    <button class="withdraw-button" type="button">4</button>
+                    <button class="withdraw-button" type="button">5</button>
+                    <button class="withdraw-button" type="button">6</button>
+                    <button class="withdraw-button" type="button">7</button>
+                    <button class="withdraw-button" type="button">8</button>
+                    <button class="withdraw-button" type="button">9</button>
+                    <button class="withdraw-button" class="keypad-utility" type="button">Clear</button>
+                    <button class="withdraw-button" type="button">0</button>
+                    <button class="withdraw-button" class="keypad-utility" type="button">Delete</button>
                 </div>
                 <div class="keypad-actions">
                     <a href="./dashboard.html">Cancel</a>
-                    <button type="button">Enter</button>
                 </div>
-                <p class="keypad-help">Select an account or amount field before using the keypad.</p>
             </section>
         </div>
     </main>
@@ -87,4 +86,6 @@
         <span class="session-status"><i aria-hidden="true"></i> Demo session · Connected</span>
     </footer>
 </body>
+<script src="./atm-users.js"></script>
+<script src="./atm.js"></script>
 </html>

@@ -298,6 +298,10 @@ withdrawButton.forEach((wbtn) => {
             confirmDepositBtn.hidden = !isValidDeposit;
         }
 
+        if(transferMessage){
+            validateTransfer()
+        }
+
 });
 });
 
@@ -449,6 +453,23 @@ if (confirmDepositBtn && customAmountInput && activeProfile) {
     });
 }
 
+const transferMessage = document.getElementById("transfer-message")
+function validateTransfer(){
+        
+    const amount = Number(
+        customAmountInput.value.replace(/\D/g, '')
+    );
+
+    if(amount <= 0){
+      transferMessage.textContent = 'Please enter a valid amount.';
+        return false;
+    }
+
+     if(amount > balanceDisplay){
+      transferMessage.textContent = `Insufficient funds. Enter nothing more than ${balanceDisplay}.`;
+        return false;
+    }
+}
 
 
 
