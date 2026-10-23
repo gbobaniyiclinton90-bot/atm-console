@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Transfer Receipt | Apex Digital Bank</title>
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./transfer_success.css">
+</head>
+
+<body class="transfer-success-page">
+
+    <main class="receipt-container">
+
+        <div class="receipt-status">
+            <span class="success-icon" aria-hidden="true">✓</span>
+            <h1>Transfer Recorded</h1>
+            <p>Your demo transfer has been processed by the simulator.</p>
+        </div>
+
+        <section class="receipt-card">
+
+            <p class="receipt-label">Amount transferred</p>
+            <h2 id="receipt-amount">₦0</h2>
+
+            <div class="receipt-divider"></div>
+
+            <div class="receipt-row">
+                <span>Status</span>
+                <strong id="receipt-status">Simulated</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Recipient</span>
+                <strong id="receipt-recipient">—</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Destination account</span>
+                <strong id="receipt-account">—</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Destination bank</span>
+                <strong id="receipt-bank">—</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Reference</span>
+                <strong id="receipt-reference">—</strong>
+            </div>
+
+            <div class="receipt-row">
+                <span>Date and time</span>
+                <strong id="receipt-date">—</strong>
+            </div>
+
+            <div class="receipt-divider"></div>
+
+            <div class="receipt-row">
+                <span>Remaining balance</span>
+                <strong id="receipt-balance">—</strong>
+            </div>
+
+        </section>
+
+        <div class="receipt-actions">
+            <a href="./transaction_history.html">Transaction History</a>
+            <a href="./dashboard.html">Back to Dashboard</a>
+        </div>
+
+        <p class="receipt-notice">
+            Educational simulator only. No real bank transfer occurred.
+        </p>
+
+    </main>
+
+    <script src="./atm-users.js"></script>
+    <script src="./transfer_success.js"></script>
+
+</body>
+</html>

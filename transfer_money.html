@@ -29,33 +29,32 @@
             <section class="withdraw-details" aria-label="Transfer details">
                 <div class="amount-card transfer-card">
                     <label class="transfer-field-label" for="destination-account">Destination account · 10 digits</label>
-                    <input class="transfer-field" id="destination-account" type="text" inputmode="numeric" maxlength="10" value="9012342048">
+                    <input class="transfer-field"  id="destination-account" type="text" inputmode="numeric"  maxlength="10" autocomplete="off" placeholder="Enter 10-digit account number">
 
                     <label class="visually-hidden" for="destination-bank">Fictional destination bank</label>
-                    <select class="transfer-field transfer-bank" id="destination-bank">
-                        <option selected>Fictional bank: Apex Demo Bank</option>
-                        <option>Fictional bank: Unity Demo Bank</option>
-                        <option>Fictional bank: Sample Trust Bank</option>
+                   <select class="transfer-field transfer-bank" id="destination-bank">
+                        <option value="" selected disabled>Select destination bank</option>
+                        <option value="apex-demo">Fictional bank: Apex Demo Bank</option>
+                        <option value="unity-demo">Fictional bank: Unity Demo Bank</option>
+                        <option value="sample-trust">Fictional bank: Sample Trust Bank</option>
                     </select>
 
-                    <label class="transfer-field-label" for="transfer-amount">Transfer amount (NGN)</label>
-                    <input class="transfer-field transfer-amount" id="custom-amount"  type="text" inputmode="numeric" value="₦15,000">
+                    <label class="transfer-field-label" for="custom-amount">Transfer amount (NGN)</label>
+                    <input class="transfer-field transfer-amount" id="custom-amount"   type="text" inputmode="numeric" value="₦15,000">
 
                     <div class="transfer-balance">
                         <span>Available balance</span>
                         <strong id="balance"></strong>
                     </div>
+                   <aside class="">
+                      <p id="transfer-message" role="status" aria-live="polite"></p>
+                   </aside>                    
                 </div>
-
-                <p class="transfer-guidance">Use a valid 10-digit demo account and a positive amount within your available balance. Review is required before confirmation.</p>
 
                 <div class="withdraw-actions">
                     <a class="cancel-main" href="./dashboard.html">Cancel</a>
-                    <button class="confirm-withdrawal" type="button">Transfer</button>
+                    <button class="confirm-withdrawal" id="confirm-transfer" type="button" hidden>Transfer</button>
                 </div>
-                 <aside class="">
-                    <p id="transfer-message" role="status" aria-live="polite"></p>
-                </aside>
             </section>
 
             <section class="keypad-panel" aria-label="Numeric keypad">
