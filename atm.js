@@ -449,48 +449,7 @@ if (confirmDepositBtn && customAmountInput && activeProfile) {
     });
 }
 
-const withdrawalSavedTransaction = localStorage.getItem('lastWithdrawal');
-const transactionReference = document.getElementById("transaction-reference")
-const transactionDate = document.getElementById("transaction-date-time")
-const transactionAmount = document.getElementById("transaction-amount")
 
-
-
-
-// const withdrawalTransaction = withdrawalSavedTransaction
-//     ? JSON.parse(withdrawalSavedTransaction)
-//     : null;
-
-
-// if (transactionReference && withdrawalTransaction) {
-//     transactionReference.textContent =   withdrawalTransaction.reference;
-// }
-// if( transactionDate && withdrawalTransaction){
-//     transactionDate.textContent =  new Date(withdrawalTransaction.dateTime).toLocaleString();
-// }
-
-// if(transactionAmount && withdrawalTransaction){
-//     transactionAmount .textContent= `₦${withdrawalTransaction.amount.toLocaleString()}`;
-// }
-
-const depositSavedTrasaction = localStorage.getItem('lastDeposit')
-
-const depositTransaction = depositSavedTrasaction
-    ? JSON.parse(depositSavedTrasaction)
-    : null;
-
-
-if(transactionReference && depositTransaction){
-    transactionReference.textContent = depositTransaction.reference
-}
-
-if(transactionDate && depositTransaction){
-    transactionDate.textContent =  new Date(depositTransaction.dateTime).toLocaleString();
-}
-
-if(transactionAmount && depositTransaction){
-    transactionAmount .textContent= `₦${depositTransaction.amount.toLocaleString()}`;
-}
 
 
 const transactionRows = document.getElementById('transaction-rows');
