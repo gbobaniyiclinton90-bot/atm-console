@@ -26,11 +26,6 @@ const withdrawMessage = document.getElementById('withdraw-message');
 const confirmDepositBtn = document.querySelector(".confirm-deposit")
 
 
-
-
-
-
-
 if (atmUsersContainer) {
     for (const [userId, user] of Object.entries(ATM_USERS)) {
 
@@ -75,11 +70,9 @@ if (activeProfile) {
 }
 
 
-
 function checkCardLock() {
 
     const lockExpiry = Number(localStorage.getItem(lockKey));
-
 
     if (!lockExpiry) {
         return false;
@@ -383,7 +376,6 @@ if (confirmWithdrawBtn && customAmountInput && activeProfile) {
 }
 
 
-
 function validateDeposit() {
     const amount = Number(
         customAmountInput.value.replace(/\D/g, '')
@@ -462,21 +454,24 @@ const transactionReference = document.getElementById("transaction-reference")
 const transactionDate = document.getElementById("transaction-date-time")
 const transactionAmount = document.getElementById("transaction-amount")
 
-const withdrawalTransaction = withdrawalSavedTransaction
-    ? JSON.parse(withdrawalSavedTransaction)
-    : null;
 
 
-if (transactionReference && withdrawalTransaction) {
-    transactionReference.textContent =   withdrawalTransaction.reference;
-}
-if( transactionDate && withdrawalTransaction){
-    transactionDate.textContent =  new Date(withdrawalTransaction.dateTime).toLocaleString();
-}
 
-if(transactionAmount && withdrawalTransaction){
-    transactionAmount .textContent= `₦${withdrawalTransaction.amount.toLocaleString()}`;
-}
+// const withdrawalTransaction = withdrawalSavedTransaction
+//     ? JSON.parse(withdrawalSavedTransaction)
+//     : null;
+
+
+// if (transactionReference && withdrawalTransaction) {
+//     transactionReference.textContent =   withdrawalTransaction.reference;
+// }
+// if( transactionDate && withdrawalTransaction){
+//     transactionDate.textContent =  new Date(withdrawalTransaction.dateTime).toLocaleString();
+// }
+
+// if(transactionAmount && withdrawalTransaction){
+//     transactionAmount .textContent= `₦${withdrawalTransaction.amount.toLocaleString()}`;
+// }
 
 const depositSavedTrasaction = localStorage.getItem('lastDeposit')
 
