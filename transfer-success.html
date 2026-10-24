@@ -4,81 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Transfer Receipt | Apex Digital Bank</title>
+    <title>Transfer Confirmation | Digital ATM</title>
 
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./transfer_success.css">
+    <link rel="stylesheet" href="./transfar-success.css">
 </head>
 
 <body class="transfer-success-page">
+    <header class="top-navbar">
+        <div class="logo-area">
+            <span class="logo-icon" aria-hidden="true">▲</span>
+            <div class="logo-text">
+                <h1>APEX</h1>
+                <p>DIGITAL BANK</p>
+            </div>
+        </div>
+        <nav class="success-header-actions" aria-label="Page navigation">
+            <a href="./transfer_money.html">← Back</a>
+            <a href="./dashboard.html"><span aria-hidden="true">⌂</span> Home</a>
+        </nav>
+        <div class="terminal-info">
+            <p class="date-time">09 Oct 2026 · 14:30</p>
+            <p class="terminal-name">APEX DEMO TERMINAL</p>
+        </div>
+    </header>
 
-    <main class="receipt-container">
-
-        <div class="receipt-status">
-            <span class="success-icon" aria-hidden="true">✓</span>
-            <h1>Transfer Recorded</h1>
-            <p>Your demo transfer has been processed by the simulator.</p>
+    <main class="success-main receipt-container">
+        <div class="success-heading">
+            <h1>Transaction confirmation.</h1>
+            <p>A clear result for your simulated session.</p>
         </div>
 
-        <section class="receipt-card">
+        <div class="success-layout">
+            <section class="success-message" aria-labelledby="success-title">
+                <span class="success-check" aria-hidden="true">✓</span>
+                <h2 id="success-title">Transfer successful.</h2>
+                <p>Your simulated transfer has been recorded. No real bank transfer occurred.</p>
+                <p class="success-notice">Educational simulator only. This transaction is fictional.</p>
+            </section>
 
-            <p class="receipt-label">Amount transferred</p>
-            <h2 id="receipt-amount">₦0</h2>
+            <section class="transaction-column" aria-label="Transfer receipt">
+                <div class="transaction-card">
+                    <p class="transaction-label">Amount transferred (simulated)</p>
+                    <p class="transaction-amount" id="receipt-amount">₦0</p>
 
-            <div class="receipt-divider"></div>
+                    <dl class="transaction-details">
+                        <div>
+                            <dt>Status</dt>
+                            <dd id="receipt-status">Simulated</dd>
+                        </div>
+                        <div>
+                            <dt>Recipient</dt>
+                            <dd id="receipt-recipient">—</dd>
+                        </div>
+                        <div>
+                            <dt>Destination account</dt>
+                            <dd id="receipt-account">—</dd>
+                        </div>
+                        <div>
+                            <dt>Destination bank</dt>
+                            <dd id="receipt-bank">—</dd>
+                        </div>
+                        <div>
+                            <dt>Simulated reference</dt>
+                            <dd id="receipt-reference">—</dd>
+                        </div>
+                        <div>
+                            <dt>Date / time</dt>
+                            <dd id="receipt-date">—</dd>
+                        </div>
+                        <div>
+                            <dt>Updated balance</dt>
+                            <dd id="receipt-balance">—</dd>
+                        </div>
+                    </dl>
+                </div>
 
-            <div class="receipt-row">
-                <span>Status</span>
-                <strong id="receipt-status">Simulated</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Recipient</span>
-                <strong id="receipt-recipient">—</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Destination account</span>
-                <strong id="receipt-account">—</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Destination bank</span>
-                <strong id="receipt-bank">—</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Reference</span>
-                <strong id="receipt-reference">—</strong>
-            </div>
-
-            <div class="receipt-row">
-                <span>Date and time</span>
-                <strong id="receipt-date">—</strong>
-            </div>
-
-            <div class="receipt-divider"></div>
-
-            <div class="receipt-row">
-                <span>Remaining balance</span>
-                <strong id="receipt-balance">—</strong>
-            </div>
-
-        </section>
-
-        <div class="receipt-actions">
-            <a href="./transaction_history.html">Transaction History</a>
-            <a href="./dashboard.html">Back to Dashboard</a>
+                <nav class="success-actions" aria-label="Next steps">
+                    <a class="dashboard-action" href="./dashboard.html">
+                        <span class="home-icon" aria-hidden="true"></span>
+                        Return to Dashboard
+                    </a>
+                    <a class="history-action" href="./transactions.html">
+                        Transaction History
+                    </a>
+                </nav>
+            </section>
         </div>
-
-        <p class="receipt-notice">
-            Educational simulator only. No real bank transfer occurred.
-        </p>
-
     </main>
 
-    <script src="./atm-users.js"></script>
-    <script src="./transfer_success.js"></script>
+    <footer class="withdraw-footer">
+        <span>Educational simulator — no real transactions.</span>
+        <span class="session-status"><i aria-hidden="true"></i> Demo session · Connected</span>
+    </footer>
 
+    <script src="./atm-users.js"></script>
+    <script src="./transfer-succes.js"></script>
 </body>
 </html>

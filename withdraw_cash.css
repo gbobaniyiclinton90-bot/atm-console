@@ -209,11 +209,13 @@ body.deposit-page {
     font-size: 12px;
 }
 
-#withdraw-message:empty {
+#withdraw-message:empty,
+#transfer-message:empty {
     display: none;
 }
 
-#withdraw-message:not(:empty) {
+#withdraw-message:not(:empty),
+#transfer-message:not(:empty) {
     position: relative;
     grid-column: 1 / -1;
     margin: 16px 0 0;
@@ -225,7 +227,8 @@ body.deposit-page {
     line-height: 1.5;
 }
 
-#withdraw-message:not(:empty)::before {
+#withdraw-message:not(:empty)::before,
+#transfer-message:not(:empty)::before {
     position: absolute;
     top: 50%;
     left: 15px;

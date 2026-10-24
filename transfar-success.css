@@ -1,103 +1,357 @@
 .transfer-success-page {
+    --success-bg: #f3f6fc;
+    --success-text: #1b3155;
+    --success-muted: #647995;
+    --success-border: #d9e3f0;
+    --success-blue: #214ed8;
+    --success-green: #12a85a;
     min-height: 100vh;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: var(--success-bg);
+    color: var(--success-text);
 }
 
-.receipt-container {
-    width: 100%;
-    max-width: 560px;
-    margin: auto;
+.transfer-success-page .top-navbar {
+    min-height: 88px;
+    padding: 15px 32px;
+    background: #102b45;
 }
 
-.receipt-status {
-    text-align: center;
-    margin-bottom: 25px;
+.transfer-success-page .logo-area {
+    gap: 12px;
 }
 
-.success-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 15px;
+.transfer-success-page .logo-icon {
     display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 11px;
+    background: #12b8a6;
+    color: #102b45;
+    font-size: 24px;
+}
+
+.transfer-success-page .logo-text h1,
+.transfer-success-page .logo-text p,
+.transfer-success-page .terminal-info p {
+    margin: 0;
+}
+
+.transfer-success-page .logo-text h1 {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 0;
+}
+
+.transfer-success-page .logo-text p,
+.transfer-success-page .terminal-name {
+    margin-top: 3px;
+    color: #b8c6d7;
+}
+
+.success-header-actions {
+    display: flex;
+    gap: 26px;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.success-header-actions a {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.success-header-actions a span {
+    margin-right: 4px;
+}
+
+.transfer-success-page .date-time {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.transfer-success-page .terminal-name {
+    font-size: 11px;
+}
+
+.success-main {
+    width: 100%;
+    flex: 1;
+    padding: 34px 32px 40px;
+}
+
+.success-heading {
+    margin-bottom: 23px;
+}
+
+.success-heading h1 {
+    margin: 0 0 8px;
+    color: var(--success-text);
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+.success-heading p {
+    margin: 0;
+    color: var(--success-muted);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.success-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(380px, 1.08fr);
+    align-items: start;
+    gap: 32px;
+}
+
+.success-message {
+    padding-top: 0;
+}
+
+.success-check {
+    display: grid;
+    width: 80px;
+    height: 80px;
     place-items: center;
     border-radius: 50%;
-    font-size: 32px;
-    font-weight: bold;
-    background: #e2f7e9;
-    color: #167a3e;
+    background: #eafbf2;
+    color: var(--success-green);
+    font-size: 40px;
+    font-weight: 300;
 }
 
-.receipt-status h1 {
-    margin-bottom: 8px;
+.success-message h2 {
+    margin: 22px 0 20px;
+    color: var(--success-text);
+    font-size: 34px;
+    line-height: 1.2;
 }
 
-.receipt-status p {
-    line-height: 1.6;
-}
-
-.receipt-card {
-    padding: 28px;
-    border-radius: 16px;
-    background: #ffffff;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-}
-
-.receipt-label {
+.success-message > p {
+    max-width: 440px;
     margin: 0;
-    text-align: center;
+    color: var(--success-muted);
+    font-size: 17px;
+    line-height: 1.4;
 }
 
-#receipt-amount {
-    margin: 10px 0 20px;
-    text-align: center;
-    font-size: 2rem;
+.success-message .success-notice {
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #eafbf2;
+    color: #167a3e;
+    font-size: 14px;
 }
 
-.receipt-divider {
-    border-top: 1px dashed #d5d5d5;
-    margin: 22px 0;
+.transaction-column {
+    min-width: 0;
 }
 
-.receipt-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+.transaction-card {
+    padding: 24px 23px 22px;
+    border: 1px solid var(--success-border);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(21, 45, 67, 0.04);
+}
+
+.transaction-label {
+    margin: 0 0 22px;
+    color: var(--success-muted);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.transaction-amount {
+    margin: 0 0 24px;
+    color: var(--success-text);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.transaction-details {
+    display: grid;
     gap: 20px;
-    margin: 18px 0;
+    margin: 0;
 }
 
-.receipt-row span {
-    color: #666;
-    flex-shrink: 0;
+.transaction-details div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
 }
 
-.receipt-row strong {
+.transaction-details dt {
+    color: var(--success-muted);
+    font-size: 14px;
+}
+
+.transaction-details dd {
+    margin: 0;
+    color: var(--success-text);
+    font-size: 14px;
+    font-weight: 700;
     text-align: right;
     overflow-wrap: anywhere;
 }
 
-.receipt-actions {
+.success-actions {
+    display: grid;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.success-actions a {
     display: flex;
-    flex-wrap: wrap;
+    min-height: 56px;
+    align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-top: 22px;
-}
-
-.receipt-actions a {
-    display: inline-block;
-    padding: 12px 18px;
-    border-radius: 8px;
+    border: 1px solid var(--success-border);
+    border-radius: 12px;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
-    text-align: center;
 }
 
-.receipt-notice {
-    margin-top: 24px;
-    text-align: center;
-    font-size: 0.85rem;
-    line-height: 1.5;
+.dashboard-action {
+    border-color: var(--success-blue) !important;
+    background: var(--success-blue);
+    color: #fff;
+}
+
+.history-action {
+    background: #fff;
+    color: #112b45;
+}
+
+.home-icon {
+    position: relative;
+    width: 15px;
+    height: 12px;
+    border: 1.5px solid currentColor;
+    border-top: 0;
+    border-radius: 2px;
+}
+
+.home-icon::before {
+    position: absolute;
+    top: -6px;
+    left: 1px;
+    width: 9px;
+    height: 9px;
+    border-top: 1.5px solid currentColor;
+    border-left: 1.5px solid currentColor;
+    content: "";
+    transform: rotate(45deg);
+}
+
+.success-actions a:focus-visible,
+.success-header-actions a:focus-visible {
+    outline: 3px solid rgba(33, 78, 216, 0.35);
+    outline-offset: 3px;
+}
+
+.transfer-success-page .withdraw-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 32px;
+    border-top: 1px solid var(--success-border);
+    background: #fff;
+    color: var(--success-muted);
+    font-size: 12px;
+}
+
+.transfer-success-page .session-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #008f7c;
+}
+
+.transfer-success-page .session-status i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #12b8a6;
+}
+
+@media (max-width: 760px) {
+    .transfer-success-page .top-navbar {
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 16px 20px;
+    }
+
+    .success-header-actions {
+        order: 3;
+        width: 100%;
+        margin: 0;
+    }
+
+    .transfer-success-page .terminal-info {
+        margin-left: auto;
+    }
+
+    .success-main {
+        padding: 28px 20px 32px;
+    }
+
+    .success-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .success-actions {
+        gap: 12px;
+    }
+
+    .transfer-success-page .withdraw-footer {
+        flex-wrap: wrap;
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .success-heading h1 {
+        font-size: 28px;
+    }
+
+    .success-heading p {
+        font-size: 14px;
+    }
+
+    .success-message h2 {
+        font-size: 29px;
+    }
+
+    .success-message > p {
+        font-size: 15px;
+    }
+
+    .transaction-card {
+        padding: 20px 16px;
+    }
+
+    .transaction-amount {
+        font-size: 34px;
+    }
+
+    .transaction-details {
+        gap: 16px;
+    }
+
+    .transaction-details dt,
+    .transaction-details dd {
+        font-size: 13px;
+    }
 }

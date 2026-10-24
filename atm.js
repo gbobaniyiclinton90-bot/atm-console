@@ -470,7 +470,6 @@ if (confirmDepositBtn  && activeProfile) {
 
 
 const destinationAccountInput = document.getElementById("destination-account" )
-const destinationAccount = destinationAccountInput.value.trim()
 const destinationBankInput = document.getElementById("destination-bank")
 const transferMessage = document.getElementById("transfer-message")
 const confirmTransferBtn = document.getElementById("confirm-transfer")
@@ -739,10 +738,75 @@ if (
         );
 
         // Redirect the sender to the receipt page.
-        window.location.href = './transfer_success.html';
+        window.location.href = './transfer-success.html';
     });
 }
 
+const savedTransfer = localStorage.getItem('lastTransfer');
+const receiptContainer = document.querySelector('.receipt-container');
+
+if (receiptContainer) {
+    if (savedTransfer) {
+        const transaction = JSON.parse(savedTransfer);
+
+        // Keep your existing receipt-display code here.
+    } else {
+        receiptContainer.textContent =
+            'No transfer receipt is available. Please complete a transfer first.';
+    }
+}
+
+
+if (savedTransfer) {
+    const transaction = JSON.parse(savedTransfer);
+
+    const receiptAmount = document.getElementById('receipt-amount');
+    const receiptStatus = document.getElementById('receipt-status');
+    const receiptRecipient = document.getElementById('receipt-recipient');
+    const receiptAccount = document.getElementById('receipt-account');
+    const receiptBank = document.getElementById('receipt-bank');
+    const receiptReference = document.getElementById('receipt-reference');
+    const receiptDate = document.getElementById('receipt-date');
+    const receiptBalance = document.getElementById('receipt-balance');
+
+
+   if (receiptAmount) {
+    receiptAmount.textContent = `₦${transaction.amount.toLocaleString()}`;
+   }
+
+   if(receiptStatus){
+        receiptStatus.textContent = transaction.status;
+   }
+
+    if(receiptRecipient){
+        receiptRecipient.textContent = transaction.recipientName;
+    }
+
+    if(receiptAccount){
+        receiptAccount.textContent = transaction.recipientAccount;
+    }
+
+    if(receiptBank){
+        receiptBank.textContent = transaction.recipientBank;
+    }
+
+    if(receiptReference){
+        receiptReference.textContent = transaction.reference;
+    }
+
+    if(receiptDate){
+        receiptDate.textContent =
+        new Date(transaction.dateTime).toLocaleString();
+    }
+
+    if(receiptBalance){
+        receiptBalance.textContent =
+        `₦${transaction.updatedBalance.toLocaleString()}`;
+    }
+} else {
+    document.querySelector('.receipt-container').textContent =
+        'No transfer receipt is available. Please complete a transfer first.';
+}
 
 
 
