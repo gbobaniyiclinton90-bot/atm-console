@@ -541,20 +541,22 @@ function validateTransfer() {
 function updateTransferButton() {
     if (!confirmTransferBtn) return;
 
-    confirmTransferBtn.hidden = !validateTransfer();
+    const isValid = validateTransfer();
+
+    confirmTransferBtn.hidden = !isValid;
+
 }
 
-if ( confirmTransferBtn && customAmountInput && destinationAccountInput &&  destinationBankInput
-) {
+if (confirmTransferBtn &&
+    customAmountInput &&
+    destinationAccountInput &&
+    destinationBankInput
+    ) {
     confirmTransferBtn.hidden = true;
 
-    customAmountInput.addEventListener('input', updateTransferButton);
-
     destinationAccountInput.addEventListener('input', updateTransferButton);
-
+    customAmountInput.addEventListener('input', updateTransferButton);
     destinationBankInput.addEventListener('change', updateTransferButton);
-
-    customAmountInput.addEventListener( 'input', updateTransferButton );
 }
 
 
@@ -737,24 +739,28 @@ if (
             JSON.stringify(senderTransaction)
         );
 
+        if (confirmTransferBtn) {updateTransferButton();}
+
         // Redirect the sender to the receipt page.
         window.location.href = './transfer-success.html';
     });
 }
 
+
+
 const savedTransfer = localStorage.getItem('lastTransfer');
 const receiptContainer = document.querySelector('.receipt-container');
 
-if (receiptContainer) {
-    if (savedTransfer) {
-        const transaction = JSON.parse(savedTransfer);
 
-        // Keep your existing receipt-display code here.
-    } else {
-        receiptContainer.textContent =
-            'No transfer receipt is available. Please complete a transfer first.';
-    }
-}
+
+// if (receiptContainer) {
+//     if (savedTransfer) {
+//         const transaction = JSON.parse(savedTransfer);
+//     } else {
+//         receiptContainer.textContent =
+//             'No transfer receipt is available. Please complete a transfer first.';
+//     }
+// }
 
 
 if (savedTransfer) {
