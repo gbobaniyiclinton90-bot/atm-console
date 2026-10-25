@@ -542,3 +542,127 @@ main a{
     font-size: 18px;
     font-weight: bold;
 }
+
+@media (max-width: 800px) {
+    .top-navbar {
+        gap: 12px;
+        padding: 14px 20px;
+    }
+
+    .terminal-info {
+        flex-shrink: 0;
+    }
+
+    .date-time {
+        font-size: 12px;
+    }
+
+    .terminal-name {
+        font-size: 9px;
+    }
+
+    .dashboard-container {
+        width: calc(100% - 40px);
+        margin: 22px auto;
+        padding: 0;
+    }
+
+    .user-welcome,
+    .balance-link,
+    .balance-card,
+    .action-grid > .grid-link,
+    .grid-item {
+        min-width: 0;
+    }
+
+    .greeting-section {
+        margin-bottom: 18px;
+    }
+
+    .time-greeting {
+        font-size: 23px;
+    }
+
+    .username {
+        font-size: 22px;
+    }
+
+    .balance-card {
+        padding: 20px;
+        margin-bottom: 22px;
+    }
+
+    .balance-amount {
+        font-size: clamp(30px, 9vw, 38px);
+        overflow-wrap: anywhere;
+    }
+
+    .card-bottom {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .account-type,
+    .card-number {
+        font-size: 12px;
+    }
+
+    .card-number {
+        max-width: 100%;
+        white-space: normal;
+        text-align: right;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .action-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-bottom: 24px;
+    }
+
+    .grid-item {
+        min-height: 120px;
+        padding: 14px 12px;
+    }
+
+    .grid-item .icon {
+        margin-bottom: 10px;
+        font-size: 21px;
+    }
+
+    .grid-item h3 {
+        font-size: 15px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    .grid-item p {
+        font-size: 12px;
+        line-height: 1.35;
+    }
+}
+
+@media (max-width: 360px) {
+    .top-navbar {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .dashboard-container {
+        width: calc(100% - 28px);
+    }
+
+    .balance-card {
+        padding: 17px;
+    }
+
+    .grid-item {
+        padding: 12px 10px;
+    }
+
+    .grid-item h3 {
+        font-size: 14px;
+    }
+}
