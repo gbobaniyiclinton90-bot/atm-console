@@ -548,6 +548,10 @@ main a{
 }
 
 @media (max-width: 800px) {
+    body {
+        touch-action: manipulation;
+    }
+
     .top-navbar {
         gap: 12px;
         padding: 14px 20px;
