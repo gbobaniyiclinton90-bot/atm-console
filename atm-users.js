@@ -4,7 +4,7 @@ const ATM_USERS = {
         username: "Clinton Gbobaniyi",
         accountNo: "Current Account · **** **** 9912",
         transferAccountNo: "8106255507",
-        pinCode: "2222",
+        pinCode: "1111",
         balance: 9840000
     },
 
@@ -12,7 +12,7 @@ const ATM_USERS = {
         username: "Adams OWOADE",
         accountNo: "Savings Account · **** **** 4821",
         transferAccountNo: "9012342048",
-        pinCode: "1111",
+        pinCode: "2222",
         balance: 12500000
     },
 
