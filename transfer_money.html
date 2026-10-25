@@ -29,7 +29,7 @@
             <section class="withdraw-details" aria-label="Transfer details">
                 <div class="amount-card transfer-card">
                     <label class="transfer-field-label" for="destination-account">Destination account · 10 digits</label>
-                    <input class="transfer-field"  id="destination-account" type="text" inputmode="numeric"  maxlength="10" autocomplete="off" placeholder="Enter 10-digit account number">
+                    <input class="transfer-field"  id="destination-account" type="text" inputmode="numeric"  maxlength="10" autocomplete="off" placeholder="Enter 10-digit account number" readonly>
 
                     <label class="visually-hidden" for="destination-bank">Fictional destination bank</label>
                    <select class="transfer-field transfer-bank" id="destination-bank">
@@ -40,7 +40,7 @@
                     </select>
 
                     <label class="transfer-field-label" for="custom-amount">Transfer amount (NGN)</label>
-                    <input class="transfer-field transfer-amount" id="custom-amount"   type="text" inputmode="numeric" value="₦15,000">
+                    <input class="transfer-field transfer-amount" id="custom-amount"   type="text" inputmode="numeric" value="₦15,000" readonly>
 
                     <div class="transfer-balance">
                         <span>Available balance</span>
