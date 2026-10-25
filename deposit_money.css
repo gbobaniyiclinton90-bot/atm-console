@@ -87,17 +87,35 @@
     }
 
     .deposit-page .keypad-panel {
+        display: contents;
+    }
+
+    .deposit-page .keypad-panel h2 {
         order: 2;
         width: 100%;
     }
 
-    .deposit-page .withdraw-actions {
+    .deposit-page .amount-keypad {
         order: 3;
         width: 100%;
     }
 
-    .deposit-page .deposit-slot {
+    .deposit-page .keypad-actions {
+        display: none;
+    }
+
+    .deposit-page .withdraw-actions {
         order: 4;
+        width: 100%;
+    }
+
+    .deposit-page .simulation-notice {
+        order: 5;
+        width: 100%;
+    }
+
+    .deposit-page .deposit-slot {
+        order: 6;
         width: 100%;
     }
 }
