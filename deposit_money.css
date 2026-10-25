@@ -70,3 +70,34 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+@media (max-width: 760px) {
+    .deposit-page .withdraw-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .deposit-page .withdraw-details {
+        display: contents;
+    }
+
+    .deposit-page .amount-card {
+        order: 1;
+        width: 100%;
+    }
+
+    .deposit-page .keypad-panel {
+        order: 2;
+        width: 100%;
+    }
+
+    .deposit-page .withdraw-actions {
+        order: 3;
+        width: 100%;
+    }
+
+    .deposit-page .deposit-slot {
+        order: 4;
+        width: 100%;
+    }
+}
