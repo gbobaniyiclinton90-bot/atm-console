@@ -809,8 +809,8 @@ if (savedTransfer) {
         receiptBalance.textContent =
         `₦${transaction.updatedBalance.toLocaleString()}`;
     }
-} else {
-    document.querySelector('.receipt-container').textContent =
+} else if (receiptContainer) {
+    receiptContainer.textContent =
         'No transfer receipt is available. Please complete a transfer first.';
 }
 
@@ -924,4 +924,3 @@ if (
     applyTransactionFilter();
 
 }
-
