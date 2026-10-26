@@ -1,5 +1,4 @@
 
-
 const nameDisplay = document.getElementById('names');
 const cardDisplay = document.getElementById('card-details');
 const btns = document.querySelectorAll(".button");
@@ -67,7 +66,7 @@ if (activeProfile) {
 
     if (balanceDisplay) {
         balanceDisplay.textContent =
-            `₦${activeProfile.balance.toLocaleString()}`;
+        `₦${activeProfile.balance.toLocaleString()}`;
     }
 }
 
@@ -228,6 +227,9 @@ if (submitBtn) {
     });
 }
 
+
+
+
 if (customAmountInput && activeProfile) {
 
     quickAmountRadios.forEach((radio) => {
@@ -266,6 +268,7 @@ if (customAmountInput && activeProfile) {
 
 }
 
+let activeKeypadInput = customAmountInput;
 
 withdrawButton.forEach((wbtn) => {
 wbtn.addEventListener('click', () => {
@@ -275,7 +278,6 @@ const value = wbtn.textContent.trim().toLowerCase();
 
     let currentValue = activeKeypadInput.value;
 
-    // Remove the currency symbol and commas from the amount.
     if (activeKeypadInput === customAmountInput) {
         currentValue = currentValue.replace(/\D/g, '');
     }
@@ -288,17 +290,14 @@ const value = wbtn.textContent.trim().toLowerCase();
         currentValue += value;
     }
 
-    // Update the amount input.
     if (activeKeypadInput === customAmountInput) {
         activeKeypadInput.value = currentValue
             ? `₦${Number(currentValue).toLocaleString()}`
             : '₦';
     } else if (activeKeypadInput === destinationAccountInput) {
-        // Keep account numbers numeric and limit them to 10 digits.
         activeKeypadInput.value = currentValue.replace(/\D/g, '').slice(0, 10);
     }
 
-    // Preserve your existing withdrawal and deposit validation.
     if (confirmWithdrawBtn) {
         confirmWithdrawBtn.hidden = !validateWithdrawal();
     }
@@ -307,7 +306,6 @@ const value = wbtn.textContent.trim().toLowerCase();
         confirmDepositBtn.hidden = !validateDeposit();
     }
 
-    // Validate the transfer when using either input.
     if (confirmTransferBtn) {
         updateTransferButton();
     }
@@ -389,6 +387,8 @@ if (confirmWithdrawBtn && activeProfile) {
 }
 
 
+
+
 function validateDeposit() {
     const amount = Number(
         customAmountInput.value.replace(/\D/g, '')
@@ -462,10 +462,7 @@ if (confirmDepositBtn  && activeProfile) {
     });
 }
 
-// const recipientEntry = Object.entries(ATM_USERS).find(
-//     ([userId, user]) =>
-//         user.transferAccountNo === destinationAccount
-// );
+
 
 
 
@@ -474,7 +471,7 @@ const destinationBankInput = document.getElementById("destination-bank")
 const transferMessage = document.getElementById("transfer-message")
 const confirmTransferBtn = document.getElementById("confirm-transfer")
 
-let activeKeypadInput = customAmountInput;
+
 
 if (destinationAccountInput) {
     destinationAccountInput.addEventListener('focus', () => {
@@ -490,12 +487,8 @@ if (customAmountInput) {
 
 
 function validateTransfer() {
-    if (
-        !customAmountInput ||
-        !destinationAccountInput ||
-        !destinationBankInput ||
-        !activeProfile
-    ) {
+    if (!customAmountInput || !destinationAccountInput || !destinationBankInput ||!activeProfile
+    ) { 
         return false;
     }
 
@@ -547,10 +540,7 @@ function updateTransferButton() {
 
 }
 
-if (confirmTransferBtn &&
-    customAmountInput &&
-    destinationAccountInput &&
-    destinationBankInput
+if (confirmTransferBtn && customAmountInput && destinationAccountInput && destinationBankInput
     ) {
     confirmTransferBtn.hidden = true;
 
@@ -561,12 +551,7 @@ if (confirmTransferBtn &&
 
 
 
-if (
-    confirmTransferBtn &&
-    customAmountInput &&
-    destinationAccountInput &&
-    destinationBankInput &&
-    activeProfile
+if ( confirmTransferBtn && customAmountInput && destinationAccountInput && destinationBankInput && activeProfile
 ) {
     confirmTransferBtn.addEventListener('click', () => {
         const isValid = validateTransfer();
@@ -583,7 +568,7 @@ if (
             customAmountInput.value.replace(/\D/g, '')
         );
 
-        // Find the recipient using their unique transfer account number.
+
         const recipientEntry = Object.entries(ATM_USERS).find(
             ([userId, user]) =>
                 user.transferAccountNo === destinationAccount
@@ -597,14 +582,13 @@ if (
             recipientProfile = recipientEntry[1];
         }
 
-        // Prevent transferring to the sender's own account.
         if (recipientId === savedsession) {
             transferMessage.textContent =
                 'You cannot transfer money to your own account.';
             return;
         }
 
-        // Get the sender's latest saved balance.
+
         const senderBalanceKey = `balance-${savedsession}`;
         const senderSavedBalance = localStorage.getItem(senderBalanceKey);
 
@@ -612,9 +596,8 @@ if (
             ? Number(senderSavedBalance)
             : activeProfile.balance;
 
-        // Get the recipient's latest saved balance if they are registered.
-        let recipientBalanceKey = null;
-        let recipientBalance = null;
+         let recipientBalanceKey = null;
+         let recipientBalance = null;
 
         if (recipientProfile) {
             recipientBalanceKey = `balance-${recipientId}`;
@@ -627,7 +610,6 @@ if (
                 : recipientProfile.balance;
         }
 
-        // Recheck the sender's balance before processing.
         if (
             !Number.isSafeInteger(senderBalance) ||
             senderBalance < amount
@@ -637,7 +619,6 @@ if (
             return;
         }
 
-        // Check that the recipient's balance can safely be increased.
         if (
             recipientProfile &&
             (
@@ -650,7 +631,6 @@ if (
             return;
         }
 
-        // Create one reference and timestamp for the transfer.
         const reference = `TRF-${Date.now()}`;
         const dateTime = new Date().toISOString();
 
@@ -660,8 +640,7 @@ if (
             ? recipientBalance + amount
             : null;
 
-        // Build the sender's transaction record.
-        const senderTransaction = {
+         const senderTransaction = {
             userId: savedsession,
             accountNo: activeProfile.accountNo,
             type: 'Transfer',
@@ -678,7 +657,7 @@ if (
             status: 'Simulated'
         };
 
-        // Build a recipient transaction only for a registered user.
+    
         let recipientTransaction = null;
 
         if (recipientProfile) {
@@ -697,19 +676,17 @@ if (
             };
         }
 
-        // Read the existing transaction history.
         const allTransactions = JSON.parse(
             localStorage.getItem('transactions') || '[]'
         );
 
-        // Prepare the new history before changing balances.
+
         allTransactions.push(senderTransaction);
 
         if (recipientTransaction) {
             allTransactions.push(recipientTransaction);
         }
 
-        // Update the sender's profile and persist the balance.
         activeProfile.balance = updatedSenderBalance;
 
         localStorage.setItem(
@@ -717,7 +694,6 @@ if (
             String(updatedSenderBalance)
         );
 
-        // Credit the recipient when they are one of our registered users.
         if (recipientProfile) {
             recipientProfile.balance = updatedRecipientBalance;
 
@@ -727,13 +703,11 @@ if (
             );
         }
 
-        // Save the updated shared transaction history.
         localStorage.setItem(
             'transactions',
             JSON.stringify(allTransactions)
         );
 
-        // Save the sender's receipt details.
         localStorage.setItem(
             'lastTransfer',
             JSON.stringify(senderTransaction)
@@ -741,7 +715,6 @@ if (
 
         if (confirmTransferBtn) {updateTransferButton();}
 
-        // Redirect the sender to the receipt page.
         window.location.href = './transfer-success.html';
     });
 }
@@ -750,17 +723,6 @@ if (
 
 const savedTransfer = localStorage.getItem('lastTransfer');
 const receiptContainer = document.querySelector('.receipt-container');
-
-
-
-// if (receiptContainer) {
-//     if (savedTransfer) {
-//         const transaction = JSON.parse(savedTransfer);
-//     } else {
-//         receiptContainer.textContent =
-//             'No transfer receipt is available. Please complete a transfer first.';
-//     }
-// }
 
 
 if (savedTransfer) {
