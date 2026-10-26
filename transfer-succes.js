@@ -12,8 +12,7 @@ if (savedTransfer) {
     const receiptDate = document.getElementById('receipt-date');
     const receiptBalance = document.getElementById('receipt-balance');
 
-    receiptAmount.textContent =
-        `₦${transaction.amount.toLocaleString()}`;
+    receiptAmount.textContent = `₦${transaction.amount.toLocaleString()}`;
 
     receiptStatus.textContent = transaction.status;
 
@@ -25,11 +24,9 @@ if (savedTransfer) {
 
     receiptReference.textContent = transaction.reference;
 
-    receiptDate.textContent =
-        new Date(transaction.dateTime).toLocaleString();
+    receiptDate.textContent = new Date(transaction.dateTime).toLocaleString();
 
-    receiptBalance.textContent =
-        `₦${transaction.updatedBalance.toLocaleString()}`;
+    receiptBalance.textContent = `₦${transaction.updatedBalance.toLocaleString()}`;
 } else {
     document.querySelector('.receipt-container').textContent =
         'No transfer receipt is available. Please complete a transfer first.';
